@@ -1,21 +1,21 @@
 #name{
-     /*표 색깔, 글자*/
     background-color: blue;
     color: white;
 }
 #preFe{
      /*표 색깔 지정*/
     background-color: lightskyblue;
+    text-align: center;
 }
 #genMa{
     /*표 색깔 지정*/
     background-color: linen;
+    text-align: center;
 }
 
-td{
-    /*글자를 위쪽 가운데 정렬 */
+caption{
     vertical-align: top;
-    text-align: center;
+    font-size: 30px;
 }
 
 table{
