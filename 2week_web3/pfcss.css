@@ -1,0 +1,54 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+header{
+    width: 100%;
+    height: 15%;
+    border-bottom: 1px solid gray;
+}
+nav{
+    width: 15%;
+    height: 70%;
+    float: left;
+    border-right: 1px solid gray;
+}
+section{
+    margin: 0;
+    text-align: left;
+    width: 50%;
+    height: 100%; 
+}
+p{
+    margin: 0;
+}
+article{
+    width: 69%;
+    height: 100%; 
+    float: left; 
+    margin-left: 5px;
+    margin-right: 5px;
+}
+aside { 
+    width: 15%; 
+    height: 70%; 
+    float: left; 
+    border-left: 1px solid gray;
+}
+footer { 
+    width: 100%; 
+    height: 5%; 
+    clear: both;
+    border-top: 1px solid gray;
+}
+h1{
+    text-align: center;
+    padding-top: 40px;
+    margin: 0;
+}
+a{
+    color: gray;
+    text-decoration: none;
+}
