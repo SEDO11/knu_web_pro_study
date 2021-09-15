@@ -2,10 +2,20 @@
     height: 30px;
     width: 30px;
 }
-html, body { margin: 0; 
+
+.bg{
+    background-image: url(picture/pic1.jpg);
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+html, body { 
+    margin: 0; 
     padding: 0; 
     height: 100%;
-    background-image: url(picture/pic1.jpg);
 } 
 header { 
     width: 10%; 
