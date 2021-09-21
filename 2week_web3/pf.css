@@ -1,8 +1,13 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #fooImg{
     height: 30px;
     width: 30px;
 }
-
 .bg{
     background-image: url(picture/pic1.jpg);
 
@@ -12,10 +17,15 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+div{
+    width: 85%; 
+    height: 10%;
+}
 html, body { 
     margin: 0; 
     padding: 0; 
     height: 100%;
+    font-family: "NEXON Lv1 Gothic OTF";
 } 
 header { 
     width: 15%; 
@@ -24,16 +34,16 @@ header {
     text-align: center;
     background-color:azure;
 }
-nav { 
-    width: 85%; 
-    height: 10%; 
-    float: left; 
-    background-color:azure;
-}
 section {
-    width: 70%;
-    height: 80%; 
+    width: 85%;
+    height: 100%; 
     float: left; 
+}
+nav { 
+    width: 15%; 
+    height: 80%; 
+    /* float: center; */
+    background-color:azure;
 }
 aside { 
     width: 15%; 
@@ -41,7 +51,7 @@ aside {
     float: left; 
 }
 footer{
-    width: 100%; 
+    width: 15%; 
     height: 10%;
     clear: both; /*footer를 아래에 고정*/
     background-color:azure;
@@ -58,16 +68,17 @@ a{
     text-decoration: none;
 }
 ul{
-    padding: 30px;
     margin: 0;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
 }
 li{
     list-style-type: none;
     float: left;
-    border: solid 4px skyblue;
+    border: solid 2px skyblue;
     font-size: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 p{
     color: gray;
