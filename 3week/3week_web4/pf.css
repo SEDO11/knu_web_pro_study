@@ -1,14 +1,10 @@
-@font-face {
+@font-face { /*외부 폰트 지정*/
     font-family: 'NEXON Lv1 Gothic OTF';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-#fooImg{
-    height: 30px;
-    width: 30px;
-}
-.bg{
+.bg{ /*메인화면 사진 적용*/
     background-image: url(picture/pic1.jpg);
 
     height: 100%;
@@ -17,15 +13,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-div{
-    width: 85%; 
-    height: 10%;
-}
 html, body { 
     margin: 0; 
     padding: 0; 
     height: 100%;
-    font-family: "NEXON Lv1 Gothic OTF";
+    font-family: "NEXON Lv1 Gothic OTF"; /*웹사이트에 폰트 적용*/
 } 
 header { 
     width: 15%; 
@@ -39,16 +31,15 @@ section {
     height: 100%; 
     float: left; 
 }
+aside{
+    width: 85%;
+    height: 10%;
+}
 nav { 
     width: 15%; 
     height: 80%; 
     /* float: center; */
     background-color:azure;
-}
-aside { 
-    width: 15%; 
-    height: 80%; 
-    float: left; 
 }
 footer{
     width: 15%; 
@@ -59,27 +50,21 @@ footer{
 h1{
     color: skyblue;
 }
-h2{
-    padding: 10px;
-    color: gray;
-}
 a{
     color: blue;
     text-decoration: none;
 }
 ul{
+    list-style: none; /*li의 점 제거*/
     margin: 0;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
+    padding: 0;
 }
 li{
-    list-style-type: none;
-    float: left;
-    border: solid 2px skyblue;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
     font-size: 20px;
 }
-p{
-    color: gray;
+figure{
+    margin: 0;
 }

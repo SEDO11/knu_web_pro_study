@@ -11,6 +11,14 @@
 #navUl {
     padding: 10px;
 }
+#hobbyImg{
+    width: 50%;
+}
+#profileImg{
+    margin: 0;
+    float: right;
+    width: 180px;
+}
 html,body {
     margin: 0;
     padding: 0;
@@ -35,8 +43,7 @@ article {
     padding-right: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 5%;
     text-align: left;
     width: 80%;
     background-color: skyblue;
@@ -61,9 +68,6 @@ footer {
     height: 10%;
     clear: both;
 }
-h1 {
-    color: gray;
-}
 h2 {
     padding: 10px;
     text-align: center;
@@ -76,7 +80,6 @@ a {
 li {
     list-style-type: none;
     float: left;
-    border: solid 4px skyblue;
     font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -91,7 +94,6 @@ img{
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
 }
 h4{
     text-align: center;
