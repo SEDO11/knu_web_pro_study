@@ -2,6 +2,9 @@
     height: 30px;
     width: 30px;
 }
+#navUl {
+    padding: 10px;
+}
 .bg {
     background-image: url(picture/pic1.jpg);
 
@@ -36,7 +39,7 @@ section {
 }
 aside {
     width: 15%;
-    height: 80%;
+    height: 10%;
     float: left;
 }
 footer {
@@ -57,17 +60,13 @@ a {
     color: blue;
     text-decoration: none;
 }
-ul {
-    padding: 30px;
-    margin: 0;
-}
 li {
     list-style-type: none;
     float: left;
-    border: solid 4px skyblue;
     font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    border: solid 2px skyblue;
 }
 p {
     color: gray;

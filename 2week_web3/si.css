@@ -69,10 +69,10 @@ a {
 li {
     list-style-type: none;
     float: left;
-    border: solid 4px skyblue;
     font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    border: solid 2px skyblue;
 }
 span {
     color: darkblue;
