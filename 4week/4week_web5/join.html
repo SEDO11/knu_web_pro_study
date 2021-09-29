@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="si.css">
     <title>회원가입</title>
 </head>
+
 <body>
     <header>
         <h1><a href="index.html" title="메인으로 돌아가기">PotFolio</a></h1>
@@ -22,32 +24,44 @@
     <section>
         <article>
             <form action="" class="box">
-                <label for="name"><h3>이름</h3></label>
+                <label for="name">
+                    <h3>이름</h3>
+                </label>
                 <span>
                     <input id="name" type="text" maxlength="5" placeholder="이름을 입력하세요 예: 홍길동">
                 </span><br>
 
-                <label for="age"><h3>나이</h3></label>
+                <label for="age">
+                    <h3>나이</h3>
+                </label>
                 <span>
                     <input id="age" type="text" maxlength="3" placeholder="나이를 입력하세요 예: 20">
                 </span><br>
 
-                <label for="id"><h3>아이디</h3></label>
+                <label for="id">
+                    <h3>아이디</h3>
+                </label>
                 <span>
                     <input id="id" type="text" size="15" maxlength="10" placeholder="아이디를 입력하세요 예: dhtp12">
                 </span><br>
 
-                <label for="pass"><h3>비밀번호</h3></label>
+                <label for="pass">
+                    <h3>비밀번호</h3>
+                </label>
                 <span>
                     <input id="pass" type="password" maxlength="10" placeholder="비밀번호를 입력하세요">
                 </span><br>
 
-                <label for="mail"><h3>이메일</h3></label>
+                <label for="mail">
+                    <h3>이메일</h3>
+                </label>
                 <span>
                     <input id="mail" type="email" maxlength="30" placeholder="아이디를 입력하세요 예: id@naver.com">
                 </span><br>
 
-                <label for="address"><h3>주소</h3></label>
+                <label for="address">
+                    <h3>주소</h3>
+                </label>
                 <span>
                     <input type="text" list="address" maxlength="15" placeholder="주소를 입력하세요">
                 </span><br>
@@ -71,18 +85,24 @@
                     <option value="세종특별자치시"></option>
                 </datalist>
 
-                <label for="tel"><h3>전화번호</h3></label>
+                <label for="tel">
+                    <h3>전화번호</h3>
+                </label>
                 <span>
                     <input id="tel" type="text" maxlength="15" placeholder="전화번호를 입력하세요 예: 010-1234-5678"><br>
                 </span><br>
 
-                <label for="birthday"><h3>생일</h3></label>
+                <label for="birthday">
+                    <h3>생일</h3>
+                </label>
                 <span>
                     <input id="birthday" type="date" value="2000-01-01">
                 </span><br>
 
-                <label for="cb"><h3>관심분야</h3></label>
-                    <div id="cb">
+                <label for="cb">
+                    <h3>관심분야</h3>
+                </label>
+                <div id="cb">
                     정치<input type="checkbox" value="1">
                     과학<input type="checkbox" value="2">
                     자연<input type="checkbox" value="3">
@@ -92,14 +112,17 @@
                     예술<input type="checkbox" value="7">
                     미술<input type="checkbox" value="8">
                     체육<input type="checkbox" value="9">
-                    </div><br>
+                </div><br>
 
-                <label for="rd"><h3>성별</h3></label>
-                    <div id="rdb">
+                <label for="rd">
+                    <h3>성별</h3>
+                </label>
+                <div id="rdb">
                     <input type="radio" name="sex" value="1" checked>
                     남자
                     <input type="radio" name="sex" value="2">
-                    여자</div><br>
+                    여자
+                </div><br>
 
                 <label for=""> <input id="btnJoin" type="submit" value="회원가입하기"></label>
                 <label for=""> <input id="btnJoin" type="reset" value="모든 내용 초기화"></label><br>
@@ -111,4 +134,5 @@
 
     <footer></footer>
 </body>
+
 </html>
