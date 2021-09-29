@@ -4,10 +4,6 @@
     font-weight: normal;
     font-style: normal;
 }
-#write {
-    padding: 30px;
-    margin: 0;
-}
 #hobbyImg{
     width: 50%;
 }
@@ -71,9 +67,6 @@ a:hover{
 }
 article > label{
     width: 50%;
-}
-.long_section{
-    height: auto;
 }
 html,body {
     margin: 0;
