@@ -19,22 +19,15 @@
     <section>
         <article>
             <h3>회원 정보 입력</h3>
-            <hr>
             <form action="">
-                <label for="">이름: <input type="text" size="15" placeholder="홍길동"></label><br>
-                <label for="">
-                    성별: 
-                    <input type="radio" name="sex" value="1" checked>
-                    남자
-                    <input type="radio" name="sex" value="2">
-                    여자</label><br>
-                <label for="">나이: <input type="text" size="3" placeholder="20"></label><br>
-                <label for="">ID: <input type="text" size="15"></label><br>
-                <label for="pass">비밀번호: </label>
-                <input id="pass" type="password" size="15">
+                <label><input type="text" size="15" placeholder="이름을 입력해주세요."></label><br>
+                <label><input type="text" size="15" placeholder="나이를 입력해주세요."></label><br>
+                <label><input type="text" size="15" placeholder="아이디를 입력해주세요."></label><br>
+                <label for="pass">
+                <input id="pass" type="password" size="15" placeholder="비밀번호를 입력해주세요."></label>
                 <input type="submit" value="완료"><br>
-                <label for="">이메일: <input type="email" size="15" placeholder="id@naver.com"></label><br>
-                <label for="">주소: <input type="text" list="address" size="15">
+                <label><input type="email" size="15" placeholder="이메일을 입력하세요, 예 id@naver.com"></label><br>
+                <label><input type="text" list="address" size="15" placeholder="주소를 선택하세요.">
                 <datalist id="address">
                     <option value="서울특별시"></option>
                     <option value="부산광역시"></option>
@@ -54,22 +47,16 @@
                     <option value="제주특별자치도"></option>
                     <option value="세종특별자치시"></option>
                 </datalist></label><br>
-                <label for="">전화번호: <input type="text" size="15" placeholder="01012345678"></label><br>
-                <label for="">생일: <input type="date" value="2000-01-01"></label><br>
-                <label for="">좋아하는 색깔: <input type="color"></label><br>
-                <label for="">관심있는 분야에 체크하세요: <br>
-                    정치<input type="checkbox" value="1">
-                    과학<input type="checkbox" value="2">
-                    자연<input type="checkbox" value="3">
-                    공학<input type="checkbox" value="4">
-                    문학<input type="checkbox" value="5">
-                    철학<input type="checkbox" value="6">
-                    예술<input type="checkbox" value="7">
-                    미술<input type="checkbox" value="8">
-                    체육<input type="checkbox" value="9">
-                </label><br>
-                <label for=""> <input type="submit" value="회원가입하기"></label>
-                <label for=""> <input type="reset" value="모든 내용 초기화"></label><br>
+                <label><input type="text" size="15" placeholder="전화번호를 입력하세요, 예: 01012345678"></label><br>
+                <label class="daradio">생일: <input type="date" value="2000-01-01" placeholder="생일"></label><br>
+                <label class="daradio">
+                    성별: 
+                    <input type="radio" name="sex" value="1" checked>
+                    남자
+                    <input type="radio" name="sex" value="2">
+                    여자</label><br>
+                <input type="submit" value="회원가입하기">
+                <input type="reset" value="모든 내용 초기화">
             </form>
         </article>
     </section>

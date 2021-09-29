@@ -8,9 +8,6 @@
     padding: 30px;
     margin: 0;
 }
-#navUl {
-    padding: 10px;
-}
 #hobbyImg{
     width: 50%;
 }
@@ -18,6 +15,16 @@
     margin: 0;
     float: right;
     width: 180px;
+}
+.daradio > input{
+    width: auto;
+}
+a:hover{
+    background-color: skyblue;
+    border-radius: 30px;
+}
+section.long_section{
+    height: auto;
 }
 html,body {
     margin: 0;
@@ -46,7 +53,7 @@ article {
     margin: 5%;
     text-align: left;
     width: 80%;
-    background-color: skyblue;
+    border: dashed skyblue 2px;
 }
 p {
     margin: 0;
@@ -54,19 +61,21 @@ p {
     text-indent: 20px;
 }
 section {
+    border: solid skyblue 2px;
     width: 70%;
-    height: 100%;
     float: left;
 }
 aside {
-    width: 15%;
-    height: 130%;
+    width: 14%;
     float: left;
 }
 footer {
     width: 100%;
     height: 10%;
     clear: both;
+}
+h1{
+    text-shadow: 2px 2px skyblue;
 }
 h2 {
     padding: 10px;
@@ -76,11 +85,13 @@ h2 {
 a {
     color: blue;
     text-decoration: none;
+    padding: 8px;
 }
 li {
     list-style-type: none;
     float: left;
     font-size: 20px;
+    padding: 8px;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -97,4 +108,12 @@ img{
 }
 h4{
     text-align: center;
+}
+form{
+    border: black solid 1px;
+}
+label > input{
+    width: 80%;
+    background-color: azure;
+    border: 0;
 }

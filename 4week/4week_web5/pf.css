@@ -4,6 +4,10 @@
     font-weight: normal;
     font-style: normal;
 }
+li:hover{
+    background-color: skyblue;
+    border-radius: 50px;
+}
 .bg{ /*메인화면 사진 적용*/
     background-image: url(picture/pic1.jpg);
 
@@ -49,6 +53,7 @@ footer{
 }
 h1{
     color: skyblue;
+    text-shadow: 2px 2px blue;
 }
 a{
     color: blue;
@@ -58,6 +63,8 @@ ul{
     list-style: none; /*li의 점 제거*/
     margin: 0;
     padding: 0;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 li{
     padding-top: 20px;
