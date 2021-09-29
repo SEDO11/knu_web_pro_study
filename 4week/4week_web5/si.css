@@ -16,14 +16,21 @@
     float: right;
     width: 180px;
 }
-.daradio > input{
-    width: auto;
+.box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
 }
 a:hover{
     background-color: skyblue;
     border-radius: 30px;
 }
-section.long_section{
+.long_section{
     height: auto;
 }
 html,body {
@@ -108,12 +115,4 @@ img{
 }
 h4{
     text-align: center;
-}
-form{
-    border: black solid 1px;
-}
-label > input{
-    width: 80%;
-    background-color: azure;
-    border: 0;
 }
