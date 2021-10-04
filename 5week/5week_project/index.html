@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
-    <title>미래로교회 청년부</title>
+    <link rel="stylesheet" href="pf.css">
+    <title>여행 일기</title>
 </head>
-<body>
-    <header class="church">
-        <img src="picture/미래로교회.png" alt="">
-    </header>
-    <nav>
-        <ul class="info">
-            <li>교회 소개</li>
-            <li>연혁</li>
-            <li>찾아오시는 길</li>
-            <li>예배</li>
-            <li>섬기는 분들</li>
-        </ul>
-    </nav>
-    <div class="mainPicture">
 
+<body>
+    <div class="bg">
+        <header>
+            <h1 id="name">공주 시네마</h1>
+        </header>
+        <aside class="timeMin">
+            <script>
+                const clock = document.querySelector('.timeMin');
+
+                function getTime() {
+                    const time = new Date();
+                    const hour = time.getHours();
+                    const minutes = time.getMinutes();
+                    const seconds = time.getSeconds();
+                    //clock.innerHTML = hour +":" + minutes + ":"+seconds;
+                    clock.innerHTML = `현재 시간: ${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes}`
+                }
+
+                function init() {
+                    setInterval(getTime, 1000);
+                }
+
+                init();
+            </script>
+        </aside>
+        <nav>
+            <ul>
+                <li><a href="movie.html" title="영화">영화</a></li>
+                <li><a href="net.html">넷플릭스</a></li>
+                <li><a href="hobby.html" title="리뷰">리뷰</a></li>
+                <li><a href="join.html" title="회원가입 하러가기">회원가입</a></li>
+                <li><a href="join.html" title="회원가입 하러가기">로그인</a></li>
+            </ul>
+        </nav>
+        <footer></footer>
     </div>
-    <section>
-        d
-    </section>
-    <footer>
-        d
-    </footer>
 </body>
+
 </html>
