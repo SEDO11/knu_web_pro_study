@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <script>
+        // 둘 중에 큰 수 구하는 함수
+        function big(x,y) {
+            if(x>y) return x;
+            else return y;
+        }
+        // 둘 중에 작은 수 구하는 함수
+        function small(x, y) {
+            if(x<y) return x;
+            else return y;
+        }
+        // 최대 공약수 구하는 함수
+        function common(x,y) {
+            let res = 1;
+            let s = small(x, y);
+            for (let i = 0; i <= s; i++) {
+                if (!(x%i) && !(y%i)) { //두개다 똑같이 나누어 떨어지면
+                    res = i;
+                }
+            }
+            return res;
+        }
+    </script>
+</head>
+<body>
+    <script>
+        // 누가 더 큰가, 둘 중에 더 큰 수를 출력한다.
+        document.write(big(2, 1));
+    </script>
+    <hr>
+    <script>
+        x = Number(prompt('양수를 입력하세요.', 1));
+        y = Number(prompt('양수를 입력하세요.', 1));
+        document.write("x=",x," y=",y," GCM:" + common(x,y));
+    </script>
+</body>
+</html>
