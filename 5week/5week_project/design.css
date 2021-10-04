@@ -1,0 +1,41 @@
+.info{
+    border: ;
+}
+.info li{
+    display: inline-block;
+    margin: 10px 20px 0 20px;
+}
+.church img {
+    display: block;
+    margin: auto;
+    width: 75%;
+}
+.mainPicture {
+    height: 25%;
+    width: 100%;
+}
+.mainPicture img{
+    width: 30%;
+    height: 30%;
+}
+header{
+    height: 25%;
+    width: 25%;
+    margin: 0;
+    float: left;
+}
+nav{
+    height: 25%;
+    width: 75%;
+    float: left;
+}
+section{
+    height: 50%;
+    width: 100%;
+    float: left;
+}
+footer{
+    height: 15%;
+    width: 100%;
+    float: left;
+}
