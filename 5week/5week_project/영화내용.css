@@ -24,7 +24,6 @@ html, body {
     height: 100%;
     font-family: "NEXON Lv1 Gothic OTF"; /*웹사이트에 폰트 적용*/
     background-color: gray;
-    background-image: url(picture/movie1.jpg);
 } 
 .movieSec > article {
     font-weight: bold;
@@ -62,9 +61,9 @@ header {
 }
 section {
     padding: 10px;
-    width: 70%;
-    float: left; 
-    border: 1px solid black;
+    width: 100%;
+    float: left;
+    margin: 0;
 }
 article{
     text-align: center;
@@ -72,7 +71,7 @@ article{
     height: auto;
     float: left;
     border: solid 1px black;
-    margin: 10px;
+    margin: 10px 30px 10px 30px;
 }
 aside{
     width: 15%;
