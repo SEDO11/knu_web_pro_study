@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#hobbyImg{
+    width: 50%;
+}
+#profileImg{
+    margin: 0;
+    float: right;
+    width: 180px;
+}
+#cb input{
+    cursor: pointer;
+}
+#rdb input{
+    cursor: pointer;
+}
+#btnJoin, #btnReset{
+    width: 45%;
+    margin: 10px;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    background-color: brown;
+    font-size: 20px;
+    font-weight: 400;
+}
+#btnJoin:hover, #btnReset:hover{
+    border-radius: 30px;
+}
+article > form > span{
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+article > form > div{
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+span input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+a:hover{
+    background-color: lightcoral;
+    border-radius: 30px;
+}
+article > label{
+    width: 50%;
+}
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+    font-family: "NEXON Lv1 Gothic OTF";
+}
+header {
+    width: 15%;
+    height: 10%;
+    float: left;
+    text-align: center;
+}
+nav {
+    width: 85%;
+    height: 10%;
+    float: left;
+}
+article {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 5%;
+    text-align: left;
+    width: 80%;
+    border: dashed black 2px;
+}
+p {
+    margin: 0;
+    padding-bottom: 10px;
+    text-indent: 20px;
+}
+section {
+    border: solid black 2px;
+    width: 70%;
+    float: left;
+}
+aside {
+    width: 14%;
+    float: left;
+}
+footer {
+    width: 100%;
+    height: 10%;
+    clear: both;
+}
+h2 {
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+}
+li {
+    list-style-type: none;
+    float: left;
+    font-size: 20px;
+    padding: 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+span {
+    color: darkblue;
+    font-size: 20px;
+}
+img{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+h4{
+    text-align: center;
+}

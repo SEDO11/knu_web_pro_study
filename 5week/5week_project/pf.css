@@ -4,6 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 li:hover{
     background-color: lightcoral;
     border-radius: 50px;
@@ -18,7 +24,8 @@ li:hover{
 .timeMin{
     text-align: right;
     font-size: 100px;
-    color: azure;
+    color: white;
+    font-family: "IM_Hyemin-Bold";
 }
 /* 태그 */
 html, body { 
