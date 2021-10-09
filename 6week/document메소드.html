@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document객체 메소드</title>
+    <script>
+        let i = 0;
+        function showHTML() {
+            var win = null;
+            if(win == null || win.closed)
+                var textTitle = document.getElementById("titleText");
+                var textArea = document.getElementById("srcText");
+
+                win = window.open("", textTitle.value, "width=300, height=200");
+                // win.window.open();
+                win.document.write("<html><head><title>스티커 메모</title><head>");
+                win.document.write("<body><h2>" + textTitle.value + "</h2><hr>");
+                win.document.write("<p>" + textArea.value + "</p>");
+                win.document.close();
+                i += 1;
+        }
+    </script>
+</head>
+<body>
+    <h3>HTML 문서 작성기 만들기</h3>
+    <hr>
+    <p>아래에 HTMl 문서를 작성하고 버튼을 클릭해 보세요.
+    새 윈도우에 HTML 문서가 출력됩니다.</p>
+    <input type="text" id="titleText">
+    <textarea id="srcText" rows="10" cols="50"></textarea>
+    <br>
+    <br>
+    <button onclick="showHTML()">HTML 문서 출력하기</button>
+</body>
+</html>

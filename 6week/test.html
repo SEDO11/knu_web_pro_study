@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>form submit popup</title>
+<script type="text/javascript">
+
+//팝업 오픈
+$scope.openPop = function() {
+
+	//popup수 만큼 for돌리기
+    var data = '3';
+	for (var i=0; i<data; i++) {
+		var seq = i;		
+		window.open('', 'popEx '+seq, 'width=400, height=600');
+		formSubEx(seq);
+	}
+};
+
+//데이터 전송
+function formSubEx(seq){
+	
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "POST");
+	form.setAttribute("target", 'popEx '+seq);
+	form.setAttribute("action", getContextPath() + "/popEx.co");
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "I_DATA");
+	hiddenField.setAttribute("id", "I_DATA");
+	hiddenField.setAttribute("value", "전송데이터1");
+	form.appendChild(hiddenField);
+
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "TITLE");
+	hiddenField.setAttribute("id", "TITLE");
+	hiddenField.setAttribute("value", "전송데이터2");
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "SEQ");
+	hiddenField.setAttribute("id", "SEQ");
+	hiddenField.setAttribute("value", seq);
+	form.appendChild(hiddenField);
+	
+	document.body.appendChild(form);
+	form.submit();
+}
+
+</script>
+</head>
+<body>
+	<div class="win">
+		<button class="btn blu" ng-click="openPop()">팝업</button>
+	</div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pf.css">
-    <script src="loginTest.js"></script>
+    <script src="time.js"></script>
     <title>영화 사이트</title>
 </head>
 
@@ -16,24 +16,6 @@
             <h1 id="name">공주 시네마</h1>
         </header>
         <aside class="timeMin">
-            <script>
-                const clock = document.querySelector('.timeMin');
-
-                function getTime() {
-                    const time = new Date();
-                    const hour = time.getHours();
-                    const minutes = time.getMinutes();
-                    const seconds = time.getSeconds();
-                    //clock.innerHTML = hour +":" + minutes + ":"+seconds;
-                    clock.innerHTML = `현재 시간: ${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes}`
-                }
-
-                function init() {
-                    setInterval(getTime, 1000);
-                }
-
-                init();
-            </script>
         </aside>
         <nav>
             <ul>
