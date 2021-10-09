@@ -9,12 +9,16 @@
     <script>
         var textColor
         var backColor
+        //스티커 메모
         function stickerMemo() {
             var win = null;
             if (win == null || win.closed)
+                //메모 제목
                 var textTitle = document.getElementById("titleText");
+                //메모 내용
                 var textArea = document.getElementById("srcText");
 
+                // 스티커 메모 생성
                 win = window.open("", textTitle.value, "width=300, height=200");
                 win.window.open();
                 win.document.write("<html><head><title>" + textTitle.value + "</title><head>");
@@ -22,9 +26,11 @@
                 win.document.write("<p style=\"color:" + textColor + ";\">" + textArea.value + "</p>");
                 win.document.close();        
         }
+        //텍스트 색상
         function setTextColor(color) {
             return textColor = color.value;
         }
+        //배경 색상
         function setBackColor(color) {
             return backColor = color.value;
         }

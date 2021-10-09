@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: azure;
+            color: blue;
+        }
+
+        header {
+            text-align: center;
+            height: 100px;
+            width: 600px;
+            border: solid 1px black;
+        }
+
+        form {
+            margin: auto;
+            text-align: center;
+        }
+
+        section {
+            float: left;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            border: solid 1px black;
+            padding: 50px;
+            margin: auto;
+        }
+
+        footer {
+            text-align: center;
+            clear: both;
+            height: 200px;
+            width: 600px;
+            border: solid 1px black;
+        }
+
+        div {
+            margin: 10px 0 10px 0;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: medium;
+            margin: 0;
+        }
+    </style>
+    <title>메모</title>
+    <script>
+        function createDIV() {
+            var obj = document.getElementById("parent");
+            var newDIV = document.createElement("div"); //동적 객체 생성
+            var memo = document.getElementById("memo");
+
+            newDIV.append(memo.value);
+            newDIV.setAttribute("id", "myDIv");
+            newDIV.style.border = "solid 1px black";
+            // newDIV.style.backgroundColor = "yellow"; //배경색
+            newDIV.onclick = function () {
+                var p = this.parentElement; //부모 HTML 태그 요소
+                p.removeChild(this); //자신을 부모로 부터 제거
+            };
+            obj.appendChild(newDIV);
+            document.getElementById("memo").value = '';
+        }
+
+        function TextChange(color) {
+            var textColor = color; //글자 색 green
+            if(textColor === "black"){
+                document.getElementById("backBody").style.color = "black"
+            } else if(textColor === "red") {
+                document.getElementById("backBody").style.color  = "red";
+            } else if(textColor === "blue") {
+                document.getElementById("backBody").style.color  = "blue";
+            } else if(textColor === "green") {
+                document.getElementById("backBody").style.color  = "green";
+            }
+        }
+
+        function backChange(color) {
+            var textColor = color; //글자 색 green
+            if(textColor === "white"){
+                document.getElementById("backBody").style.backgroundColor = "white"
+            } else if(textColor === "red") {
+                document.getElementById("backBody").style.backgroundColor  = "red";
+            } else if(textColor === "blue") {
+                document.getElementById("backBody").style.backgroundColor  = "blue";
+            } else if(textColor === "green") {
+                document.getElementById("backBody").style.backgroundColor  = "green";
+            } else {
+                document.getElementById("backBody").style.backgroundColor  = "azure";
+            }
+        }
+    </script>
+</head>
+
+<body id="backBody">
+    <header>
+        <h1>My PlayList</h1>
+    </header>
+    <section id="parent">
+        <input type="text" id="memo" placeholder="가수 이름과 노래 제목을 입력하세요." size="30">
+        <button onclick="createDIV()">노래 추가</button>
+        <br>
+        <br>
+        <p>곡 목록</p>
+        <br>
+    </section>
+    <footer>
+        <h4>텍스트 색깔 바꾸기</h4>
+        <button onclick="TextChange('black')">검정</button>
+        <button onclick="TextChange('red')">빨강</button>
+        <button onclick="TextChange('green')">초록</button>
+        <button onclick="TextChange('blue')">파랑</button>
+
+        <h4>배경화면 색깔 바꾸기</h4>
+        <button onclick="backChange('red')">빨강</button>
+        <button onclick="backChange('green')">초록</button>
+        <button onclick="backChange('blue')">파랑</button>
+        <button onclick="backChange('white')">흰색</button>
+        <button onclick="backChange('azure')">아주르</button>
+    </footer>
+</body>
+
+</html>
