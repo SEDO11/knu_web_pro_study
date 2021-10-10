@@ -8,7 +8,7 @@
     <style>
         body {
             background-color: azure;
-            color: blue;
+            color: black;
         }
 
         header {
@@ -44,6 +44,7 @@
         div {
             margin: 10px 0 10px 0;
             cursor: pointer;
+            border: 1px solid black;
         }
 
         p {
@@ -77,6 +78,16 @@
             document.getElementById("memo").value = null; //노래가 추가되면 입력창 리셋
         }
 
+        function del(idName) {
+            var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+                if (boolSelect === true) { // 확인을 누를 시
+                    const div = document.getElementById(idName);
+                    div.remove(); //기존에 생성 되있던 div 제거
+                } else { // 취소를 누를 시
+                    //아무일도 일어나지 않음
+                }
+        }
+
         //글자 색 변경
         function TextChange(color) {
             var textColor = color;
@@ -102,6 +113,11 @@
         <br>
         <p>곡 목록</p>
         <br>
+        <div id="myList1" onclick="del('myList1')">BTS 버터</div>
+        <div id="myList2" onclick="del('myList2')">아이유 셀레브리티</div>
+        <div id="myList3" onclick="del('myList3')">나훈아 테스형</div>
+        <div id="myList4" onclick="del('myList4')">저스틴비버 STAY</div>
+        <div id="myList5" onclick="del('myList5')">박창근 그날들</div>
     </section>
     <footer>
         <h4>텍스트 색깔 바꾸기</h4>
