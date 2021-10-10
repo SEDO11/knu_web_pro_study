@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        .text_in {
+            padding: 15px 15px;
+            background-color: #AAAAAA;
+        }
+
+        .cal {
+            background-color: orange;
+        }
+
+        table {
+            /*테두리 제거*/
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 15px 30px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #555555;
+            color: white;
+            font-size: 20px;
+        }
+
+        input {
+            /*테두리 제거*/
+            border: none;
+            text-align: right;
+            width: 100%;
+            background-color: #AAAAAA;
+            color: white;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+    <script>
+        var numberClicked = false; //숫자 확인
+        //입력에 숫자 or 연산자 추가
+        function add(char) {
+            if (numberClicked == false) { // 이전에 연산자를 입력 했는데,
+                if (isNaN(char) == true) { // 입력 받은 값이 또 다시 연산자면
+                    // 아무것도 하지 않는다.
+                } else { // 연산자가 아니라면
+                    document.getElementById('display').value += char; // 식 뒤에 값을 추가한다.
+                }
+            } else { // 이전에 숫자를 입력 했으면,
+                document.getElementById('display').value += char; // 식 뒤에 값을 추가한다.
+            }
+
+            // 입력에 숫자가 눌렸는지 연산자가 눌렸는지 설정한다.
+            if (isNaN(char) == true) { // 연산자를 눌렀다면
+                numberClicked = false; // numberClicked를 false로 설정한다.
+            } else {
+                numberClicked = true; // numberClicked를 true로 설정한다.
+            }
+        }
+        //입, 출력값 초기화
+        function reset() {
+            var display = document.getElementById('display');
+            var result = document.getElementById('result');
+            display.value = null;
+            result.value = null;
+        }
+        //입력 값 계산 후 출력
+        function calculate() {
+            var display = document.getElementById('display');
+            var result = eval(display.value); // 식을 계산하고 result 변수에 저장합니다.
+            if(result === undefined){ //만약 입력된 값이 없을 경우
+                alert('계산 식이 입력되지 않았습니다.'); //경고창 출력
+            } else {
+                document.getElementById('result').value = result;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4" class="text_in">
+                <input type="text" id="display" placeholder="입력">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text_in">
+                <input type="text" id="result" placeholder="결과">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" onclick="reset()">AC</td>
+            <td class="cal" onclick="add('/')">/</td>
+        </tr>
+        <tr>
+            <td onclick="add(7)">7</td>
+            <td onclick="add(8)">8</td>
+            <td onclick="add(9)">9</td>
+            <td class="cal" onclick="add('*')">*</td>
+        </tr>
+        <tr>
+            <td onclick="add(4)">4</td>
+            <td onclick="add(5)">5</td>
+            <td onclick="add(6)">6</td>
+            <td class="cal" onclick="add('-')">-</td>
+        </tr>
+        <tr>
+            <td onclick="add(1)">1</td>
+            <td onclick="add(2)">2</td>
+            <td onclick="add(3)">3</td>
+            <td class="cal" onclick="add('+')">+</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="add(0)">0</td>
+            <td onclick="add('.')">.</td>
+            <td class="cal" onclick="calculate()">=</td>
+        </tr>
+    </table>
+</body>
+
+</html>
