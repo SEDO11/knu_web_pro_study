@@ -43,6 +43,7 @@
 
         div {
             margin: 10px 0 10px 0;
+            cursor: pointer;
         }
 
         p {
@@ -53,49 +54,39 @@
     </style>
     <title>메모</title>
     <script>
+        var i = 0;
         function createDIV() {
             var obj = document.getElementById("parent");
             var newDIV = document.createElement("div"); //동적 객체 생성
             var memo = document.getElementById("memo");
 
             newDIV.append(memo.value);
-            newDIV.setAttribute("id", "myDIv");
+            newDIV.setAttribute("id", "myList"); //속성, 값 부여
             newDIV.style.border = "solid 1px black";
             // newDIV.style.backgroundColor = "yellow"; //배경색
             newDIV.onclick = function () {
-                var p = this.parentElement; //부모 HTML 태그 요소
-                p.removeChild(this); //자신을 부모로 부터 제거
+                var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+                if (boolSelect === true) { // 확인을 누를 시
+                    var p = this.parentElement; //부모 HTML 태그 요소
+                    p.removeChild(this); //자신을 부모로 부터 제거
+                } else { // 취소를 누를 시
+                    //아무일도 일어나지 않음
+                }
             };
             obj.appendChild(newDIV);
-            document.getElementById("memo").value = '';
+            document.getElementById("memo").value = null; //노래가 추가되면 입력창 리셋
         }
 
+        //글자 색 변경
         function TextChange(color) {
-            var textColor = color; //글자 색 green
-            if(textColor === "black"){
-                document.getElementById("backBody").style.color = "black"
-            } else if(textColor === "red") {
-                document.getElementById("backBody").style.color  = "red";
-            } else if(textColor === "blue") {
-                document.getElementById("backBody").style.color  = "blue";
-            } else if(textColor === "green") {
-                document.getElementById("backBody").style.color  = "green";
-            }
+            var textColor = color;
+            document.getElementById("backBody").style.color = textColor;
         }
 
+        // 배경화면 색 변경
         function backChange(color) {
-            var textColor = color; //글자 색 green
-            if(textColor === "white"){
-                document.getElementById("backBody").style.backgroundColor = "white"
-            } else if(textColor === "red") {
-                document.getElementById("backBody").style.backgroundColor  = "red";
-            } else if(textColor === "blue") {
-                document.getElementById("backBody").style.backgroundColor  = "blue";
-            } else if(textColor === "green") {
-                document.getElementById("backBody").style.backgroundColor  = "green";
-            } else {
-                document.getElementById("backBody").style.backgroundColor  = "azure";
-            }
+            var textColor = color;
+            document.getElementById("backBody").style.backgroundColor = textColor;
         }
     </script>
 </head>
@@ -118,12 +109,13 @@
         <button onclick="TextChange('red')">빨강</button>
         <button onclick="TextChange('green')">초록</button>
         <button onclick="TextChange('blue')">파랑</button>
+        <button onclick="TextChange('white')">흰색</button>
 
         <h4>배경화면 색깔 바꾸기</h4>
-        <button onclick="backChange('red')">빨강</button>
-        <button onclick="backChange('green')">초록</button>
-        <button onclick="backChange('blue')">파랑</button>
-        <button onclick="backChange('white')">흰색</button>
+        <button onclick="backChange('rosybrown')">로지브라운</button>
+        <button onclick="backChange('lightseagreen')">연초록</button>
+        <button onclick="backChange('lightblue')">연파랑</button>
+        <button onclick="backChange('gray')">회색</button>
         <button onclick="backChange('azure')">아주르</button>
     </footer>
 </body>
