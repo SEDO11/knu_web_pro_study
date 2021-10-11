@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스케줄러</title>
+    <style>
+        #menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #menu .menu_link {
+            text-decoration: none;
+            display: block;
+            width: 300px;
+            height: auto;
+            font-size: 25px;
+        }
+        #menu ul {
+            margin: 0;
+            padding: 0;
+        }
+        #menu ul li {
+            margin: 0px 10px;
+            list-style: none;
+            float: left;
+        }
+        #studyMenu .web_link {
+            text-decoration: none;
+            display: block;
+            font-size: 20px;
+        }
+        #studyMenu {
+            text-align: center;
+        }
+        #studyMenu ul {
+            list-style: none;
+            padding: 0px;
+        }
+        #studyMenu ul li{
+            margin: 50px 40px;
+        }
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: azure;
+        }
+        header{
+            text-align: center;
+            float: left;
+            width: 100%;
+            height: 10%;
+        }
+        nav{
+            text-align: center;
+            float: left;
+            width: 100%;
+            height: 10%;
+        }
+        section{
+            float: left;
+            width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        iframe{
+            width: 95%;
+            height: 95%;
+            border: solid 1px black;
+        }
+        aside{
+            float: left;
+            width: 20%;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>스케줄러</h1>
+    </header>
+    <nav id="menu">
+        <ul>
+            <li><a class="menu_link" href="" target="frame1">캘린더</a></li>
+            <li><a class="menu_link" href="메모.html" target="frame1">메모</a></li>
+            <li><a class="menu_link" href="스티커메모.html" target="frame1">스티커 메모</a></li>
+        </ul>
+    </nav>
+    <section>
+        <iframe name="frame1" src="메모.html" frameborder="0"></iframe>
+    </section>
+    <aside id="studyMenu">
+        <h3>공주대 사이트</h3>
+        <ul>
+            <li><a class="web_link" href="https://www.kongju.ac.kr/main_1.jsp">공주대 홈페이지</a></li>
+            <li><a class="web_link" href="https://portal.kongju.ac.kr/">공주대 포털</a></li>
+            <li><a class="web_link" href="https://kncu.kongju.ac.kr/?pmi-sso-return2=none">공주대 LMS</a></li>
+            <li><a class="web_link" href="https://library.kongju.ac.kr/#/">공주대 도서관</a></li>
+        </ul>
+    </aside>
+</body>
+</html>
