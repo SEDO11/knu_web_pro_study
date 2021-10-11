@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 폰트 */
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 취미 */
+.hobbyImg img{
+    width: 50%;
+}
+
+/* 회원가입 */
+.box span, .box div{
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+.box span input,.box span div {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+#cb input{
+    cursor: pointer;
+}
+#rdb input{
+    cursor: pointer;
+}
+#btnJoin {
+    width: 45%;
+    margin: 10px;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: blue;
+    background-color: skyblue;
+    font-size: 20px;
+    font-weight: 400;
+}
+#btnJoin:hover{
+    border-radius: 30px;
+}
+article label{
+    width: 50%;
+}
+
+/* 프로필 */
+.graph{
+    height: 40px;
+    background-color: gainsboro;
+    border-radius: 40px;
+    margin: 0 0 30px 0;
+}
+.graph span {
+    display: block;
+    padding: 0 10px;
+    height: 100%;
+    line-height: 40px;
+    text-align: right;
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: white;
+}
+.graph.stack1 span{
+    background: violet;
+    animation: stack1 2s 1;
+    width: 70%;
+}
+.graph.stack2 span{
+    background: blue;
+    animation: stack2 2s 1;
+    width: 50%;
+}
+.graph.stack3 span{
+    background: orangered;
+    animation: stack3 2s 1;
+    width: 85%;
+}
+.graph.stack4 span{
+    background: skyblue;
+    animation: stack4 2s 1;
+    width: 75%;
+}
+.graph.stack5 span{
+    background: yellowgreen;
+    animation: stack5 2s 1;
+    width: 60%;
+}
+@keyframes stack1 {
+    0% {width: 0;} 100% {width: 70%;}
+}
+@keyframes stack2 {
+    0% {width: 0;} 100% {width: 50%;}
+}
+@keyframes stack3 {
+    0% {width: 0;} 100% {width: 85%;}
+}
+@keyframes stack4 {
+    0% {width: 0;} 100% {width: 75%;}
+}
+@keyframes stack5 {
+    0% {width: 0;} 100% {width: 60%;}
+}
+#profileImg{
+    margin: 0;
+    float: right;
+    width: 180px;
+}
+
+/* a태그 마우스 커서 갖다 댈때 */
+a:hover{
+    background-color: skyblue;
+    border-radius: 30px;
+}
+
+/* 태그 */
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: azure;
+    font-family: "NEXON Lv1 Gothic OTF";
+}
+header {
+    width: 15%;
+    height: 10%;
+    float: left;
+    text-align: center;
+}
+nav {
+    width: 85%;
+    height: 10%;
+    float: left;
+}
+article {
+    padding: 10px 50px 10px 50px;
+    margin: 5%;
+    text-align: left;
+    width: 80%;
+    border: dashed skyblue 2px;
+}
+p {
+    margin: 0;
+    padding-bottom: 10px;
+    text-indent: 20px;
+}
+section {
+    border: solid skyblue 2px;
+    width: 70%;
+    height: auto;
+    float: left;
+}
+aside {
+    width: 14%;
+    float: left;
+}
+footer {
+    width: 100%;
+    height: 10%;
+    clear: both;
+}
+h1{
+    text-shadow: 2px 2px skyblue;
+}
+h2 {
+    padding: 10px;
+    text-align: center;
+    color: skyblue;
+}
+a {
+    color: blue;
+    text-decoration: none;
+    padding: 8px;
+}
+nav > ul > li {
+    list-style-type: none;
+    float: left;
+    font-size: 20px;
+    padding: 8px;
+    margin: 0px 20px 0px 20px;
+}
+span {
+    color: darkblue;
+    font-size: 20px;
+}
+img{
+    display: block;
+    margin: 20px auto 20px auto;
+}
+h4{
+    text-align: center;
+}
+    </style>
+    <title>프로필</title>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html" title="메인으로 돌아가기">PotFolio</a></h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#profile" title="Profile 보러가기">Profile</a></li>
+            <li><a href="#stat" title="Stat 보러가기">Stat</a></li>
+            <li><a href="#contact" title="Profile 보러가기">Contact</a></li>
+            <li><a href="#history" title="History 보러가기">History</a></li>
+        </ul>
+    </nav>
+
+    <aside>
+        <h2>프로필</h2>
+    </aside>
+
+    <section>
+        <article id="profile">
+            <img id="profileImg" src="picture/프로필 사진.jpg" width="10%" alt="">
+            <h3>Profile</h3>
+            <p>이름: 오세훈</p>
+            <p>생년월일: 19**.04.*2</p>
+            <p>주소: 서울시 **구</p>
+            <p>연락처: 010-4***-4***</p>
+            <p>이메일: do11anm@naver.com</p>
+        </article>
+
+        <article id="stat">
+            <h3>Stat</h3>
+            <div class="graph stack1">
+                <span>Java</span>
+            </div>
+            <div class="graph stack2">
+                <span>C</span>
+            </div>
+            <div class="graph stack3">
+                <span>HTML5</span>
+            </div>
+            <div class="graph stack4">
+                <span>CSS3</span>
+            </div>
+            <div class="graph stack5">
+                <span>JavaScript</span>
+            </div>
+        </article>
+
+        <article id="contact">
+            <h3>Contact</h3>
+            <p><a href="https://github.com/SEDO11" title="깃 허브 가기" target="_blank">Git Hub</a></p>
+            <p><a href="https://blog.naver.com/tmvmffpsej" title="네이버 블로그 가기" target="_blank">Naver Blog</a></p>
+            <p><a href="https://sedo-engineering.tistory.com/" title="티스토리 블로그 가기" target="_blank">Tistory Blog</a></p>
+        </article>
+
+        <article id="history">
+            <h3>History</h3>
+            <p>2017.11~2019.07: 대한민국 육군 복무, 병장 만기전역</p>
+            <p>2017.03~2021.02: <a href="https://www.yuhan.ac.kr/index.do" title="대학 홈페이지 바로가기">유한대학교(2년제)</a> 전자공학과 졸업
+            </p>
+            <p>2021.03~현재: <a href="https://www.kongju.ac.kr/main_1.jsp" title="대학 홈페이지 바로가기">공주대학교(4년제)</a> 컴퓨터공학부 편입,
+                재학중</p>
+        </article>
+    </section>
+    <aside></aside>
+    <footer></footer>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+#fooImg {
+    height: 30px;
+    width: 30px;
+}
+#navUl {
+    padding: 10px;
+}
+.bg {
+    background-image: url(picture/pic1.jpg);
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+header {
+    width: 15%;
+    height: 10%;
+    float: left;
+    text-align: center;
+    background-color: azure;
+}
+nav {
+    width: 85%;
+    height: 10%;
+    float: left;
+    background-color: azure;
+}
+section {
+    width: 70%;
+    height: 80%;
+    float: left;
+}
+aside {
+    width: 15%;
+    height: 10%;
+    float: left;
+}
+footer {
+    width: 100%;
+    height: 10%;
+    clear: both;
+    /*footer를 아래에 고정*/
+    background-color: azure;
+}
+h1 {
+    color: skyblue;
+}
+h2 {
+    padding: 10px;
+    color: gray;
+}
+a {
+    color: blue;
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+    float: left;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: solid 2px skyblue;
+}
+p {
+    color: gray;
+}
