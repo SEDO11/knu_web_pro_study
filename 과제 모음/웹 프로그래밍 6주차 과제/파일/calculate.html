@@ -43,28 +43,29 @@
             outline: none;
         }
     </style>
-    <script>
-        var numberClicked = false; //숫자 확인, 처음에 연산자 입력 방지
+    <script>   
         //입력에 숫자 or 연산자 추가
+        var numberClicked = false; //숫자 확인, 처음에 연산자 입력 방지
         function add(char) {
             var display = document.getElementById('display');
-            if (numberClicked == false) { // 이전에 연산자를 입력 했는데,
-                if(isNaN(char) == true) { // 입력 받은 값이 또 다시 연산자면
+            if (numberClicked === false || display.value === undefined) { // 이전에 연산자를 입력 했거나, 입력값에 아무것도 입력하지 않았을때
+                if(isNaN(char) === true) { // 입력 받은 값이 연산자면
                     //아무것도 안함
                 } else { // 연산자가 아니라면
-                    display.value += char; // 식 뒤에 값을 추가한다.
+                    display.value += char; // 값을 추가한다.
                 }
             } else { // 이전에 숫자를 입력 했으면,
-                display.value += char; // 식 뒤에 값을 추가한다.
+                display.value += char; // 값을 추가한다.
             }
 
-            // 입력에 숫자가 눌렸는지 연산자가 눌렸는지 설정한다.
-            if (isNaN(char) == true) { // 연산자를 눌렀다면
+            // 입력에 숫자가 눌렸는지 연산자가 눌렸는지 확인한다.
+            if (isNaN(char) === true) { // 연산자를 눌렀다면
                 numberClicked = false; // numberClicked를 false로 설정한다.
             } else {
                 numberClicked = true; // numberClicked를 true로 설정한다.
             }
         }
+
         //입, 출력값 초기화
         function reset() {
             var display = document.getElementById('display');
@@ -72,6 +73,7 @@
             display.value = null;
             result.value = null;
         }
+
         //입력 값 계산 후 출력
         function calculate() {
             var display = document.getElementById('display');
