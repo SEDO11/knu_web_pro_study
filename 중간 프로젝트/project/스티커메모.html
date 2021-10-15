@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스티커 메모</title>
+    <script>
+        var textColor
+        var backColor
+        //스티커 메모
+        function stickerMemo() {
+            var win = null;
+            if (win == null || win.closed)
+                //메모 제목
+                var textTitle = document.getElementById("titleText");
+                //메모 내용
+                var textArea = document.getElementById("srcText");
+
+                // 스티커 메모 생성
+                win = window.open("", textTitle.value, "width=300, height=200");
+                win.window.open();
+                win.document.write("<html><head><title>" + textTitle.value + "</title><head>");
+                win.document.write("<body style=\"background-color:"+ backColor +" ;\"><h2 style=\"color:" + textColor + ";\">" + textTitle.value + "</h2><hr>");
+                win.document.write("<p style=\"color:" + textColor + ";\">" + textArea.value + "</p>");
+                win.document.close();        
+        }
+        //텍스트 색상
+        function setTextColor(color) {
+            return textColor = color.value;
+        }
+        //배경 색상
+        function setBackColor(color) {
+            return backColor = color.value;
+        }
+    </script>
+</head>
+
+<body>
+    <h3>스티커 메모</h3>
+    <hr>
+    <strong>제목</strong>
+    <input type="text" size="40" id="titleText">
+    <h4>내용</h4>
+    <textarea id="srcText" rows="10" cols="50"></textarea>
+    <br>
+    <h4>텍스트 색상: 기본 검정</h4>
+    <select name="textC" onchange="setTextColor(this)">
+        <option value="red">빨강</option>
+        <option value="blue">파랑</option>
+        <option value="green">초록</option>
+        <option value="black">검정</option>
+        <option value="white">흰색</option>
+    </select>
+
+    <h4>배경 색상: 기본 흰색</h4>
+    <select name="backC" onchange="setBackColor(this)">
+        <option value="red">빨강</option>
+        <option value="blue">파랑</option>
+        <option value="green">초록</option>
+        <option value="black">검정</option>
+        <option value="white">흰색</option>
+    </select>
+    <br>
+    <br>
+    <button onclick="stickerMemo()">스티커 메모 생성</button>
+</body>
+
+</html>

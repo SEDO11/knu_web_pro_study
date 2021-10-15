@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메모</title>
+    <style>
+        html, body{
+            margin: 0;
+            height: 100%;
+        }
+        header{
+            padding-left: 10px;
+            border-bottom: solid 1px black;
+        }
+        section{
+            float: left;
+            width: 39%;
+            height: 100%;
+            padding-left: 1%;
+        }
+        aside{
+            float: left;
+            height: 100%;
+            width: 58%;
+            border-left: solid 1px black;
+            padding-left: 1%;
+        }
+        #myMemo{
+            float: left;
+            margin: 10px;
+            border: 1px dashed black;
+            width: 150px;
+            height: 240px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function createMemo() {
+            var obj = document.getElementById("parent");
+            var newMemo = document.createElement("div"); //동적 객체 생성
+            var memo = document.getElementById("memo"); //작성한 내용 가져오기
+            if(0 < memo.value.length && memo.value.length <= 100){
+                newMemo.append(memo.value);
+                newMemo.setAttribute("id", "myMemo");
+                obj.appendChild(newMemo);
+                document.getElementById("memo").value='';
+                newMemo.style.backgroundColor = "yellow"; //배경색
+            } else if(memo.value.length > 100){
+                alert('글자를 너무 많이 입력했습니다. 최대 100자');
+            } else {
+                alert('글자를 입력하지 않았습니다.');
+            }
+            newMemo.onclick = function() {
+                var boolSelect = confirm("해당 메모를 삭제 하시겠습니까?");
+                if (boolSelect === true) { // 확인을 누를 시
+                    var p = this.parentElement; //부모 HTML 태그 요소
+                    p.removeChild(this); //자신을 부모로 부터 제거
+                } else { // 취소를 누를 시
+                    //아무일도 일어나지 않음
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h3>메모</h3>
+    </header>
+    <section>
+            <p>메모작성</p>
+            <textarea id="memo" cols="30" rows="10" placeholder="100자 이내로 내용을 작성하세요"></textarea>
+            <br>
+            <button onclick="createMemo()">메모 생성</button>
+    </section>
+    <aside id="parent">
+        <p>메모 내역</p>
+    </aside>
+    <p></p>
+</body>
+</html>
