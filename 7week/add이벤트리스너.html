@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add이벤트리스너</title>
+    <script>
+        var obj_p; //전역 변수는 되도록이면 사용 하지 마라
+        function init() {
+            obj_p = document.getElementById("my_p");
+            obj_p.addEventListener("mouseover", over); //이벤트 리스너 등록
+            obj_p.addEventListener("mouseout", out) = out;
+        }
+        function over() {
+            obj_p.style.backgroundColor="orchid";
+        }
+        function out() {
+            obj_p.style.backgroundColor="white";
+        }
+    </script>
+</head>
+<body onload="init()">
+    <h3>DOM 객체의 이벤트 리스너 프로퍼티에 함수 등록</h3>
+    <hr>
+    <p id="my_p">마우스를 올리면 orchid 색으로 변경</p>
+</body>
+</html>
