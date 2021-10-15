@@ -6,34 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메모</title>
     <style>
+        #myMemo{
+            float: left;
+            margin: 10px;
+            padding: 5px;
+            border: 1px dashed black;
+            width: 150px;
+            height: 240px;
+            cursor: pointer;
+            word-break: break-all; /*영어 줄바꿈을 위해 추가*/
+        }
         html, body{
             margin: 0;
             height: 100%;
         }
         header{
+            text-align: center;
             padding-left: 10px;
             border-bottom: solid 1px black;
         }
         section{
             float: left;
-            width: 39%;
+            width: 30%;
             height: 100%;
-            padding-left: 1%;
+            padding: 1%;
         }
         aside{
+            border-left: 1px solid black;
             float: left;
             height: 100%;
-            width: 58%;
-            border-left: solid 1px black;
-            padding-left: 1%;
-        }
-        #myMemo{
-            float: left;
-            margin: 10px;
-            border: 1px dashed black;
-            width: 150px;
-            height: 240px;
-            cursor: pointer;
+            width: 65%;
+            padding: 1%;
         }
     </style>
     <script>
@@ -69,14 +72,13 @@
         <h3>메모</h3>
     </header>
     <section>
-            <p>메모작성</p>
-            <textarea id="memo" cols="30" rows="10" placeholder="100자 이내로 내용을 작성하세요"></textarea>
-            <br>
-            <button onclick="createMemo()">메모 생성</button>
+        <h4>메모 작성</h4>
+        <textarea id="memo" cols="30" rows="10" placeholder="100자 이내로 내용을 작성하세요"></textarea>
+        <br>
+        <button onclick="createMemo()">메모 생성</button>
     </section>
     <aside id="parent">
-        <p>메모 내역</p>
+        <h4>메모 내역</h4>
     </aside>
-    <p></p>
 </body>
 </html>
