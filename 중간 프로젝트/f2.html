@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Local Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+  <script>
+    function openTextFile() 
+    {
+        var input = document.createElement("input");
+        input.type = "file";
+        input.accept = "text/plain";
+        input.onchange = function (event) 
+        {
+            processFile(event.target.files[0]);
+        }
+        input.click();
+    }
+
+     
+    function processFile(file) 
+    {
+        var reader = new FileReader();
+        reader.onload = function () 
+        {
+            document.getElementById("content").value = reader.result;
+        }
+        reader.readAsText(file, /* optional */ "euc-08");
+    }
+
+    function btn_Clear()
+    {
+			document.getElementById("title").value = "";
+			document.getElementById("content").value = "";
+			document.getElementById("writer").value = "";
+		}
+
+    function saveTextAsFile()
+    {
+        var textToSave = document.getElementById("content").value;
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = document.getElementById("title").value;
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        alert("저장되었습니다.");
+    }
+ 
+    function destroyClickedElement(event)
+    {
+        document.body.removeChild(event.target);
+    }
+
+    function saveText() 
+    {
+      localStorage.setItem("제목", document.getElementById("title").value);
+      localStorage.setItem("내용", document.getElementById("content").value);
+      localStorage.setItem("참고문헌", document.getElementById("writer").value);
+      content.style.display = "block";
+    }
+
+</script>
+
+  <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: ghostwhite; }
+      span { color : gray; font-size : 20px; }
+  </style>
+  <body>
+
+  <div class="container">
+
+    <span><h2>Local Upload</h2></span>
+
+    <form action="write.jsp" method="post">
+
+      <div class="form-group"><br>
+        <label for="title"><span>Title</span></label>
+        <input type="text" class="form-control" id="title"
+        onKeyUp="saveText();"onKeyDown="saveText();" placeholder="최소 4자 이상 작성해주세요." name="title"
+        maxlength="100" required="required"
+        pattern=".{4,100}">
+      </div>
+
+  <div class="form-group">
+   <label for="content"><span>Content</span></label><br><br>
+   <button type="button" class="btn btn-default" onclick="openTextFile()">불러오기</button>
+   <button type="button" class="btn btn-default" onclick="btn_Clear()">새로 작성하기</button><br><br>
+        <div id='output'></div>
+   <textarea class="form-control" rows="8" id="content" name="content" 
+   onKeyUp="saveText();"onKeyDown="saveText();" placeholder="내용"></textarea>
+ </div>
+
+    <div class="form-group">
+      <label for="writer"><span>Reference</span></label>
+      <input type="text" class="form-control" id="writer"
+      onKeyUp="saveText();"onKeyDown="saveText();" placeholder="참고 문헌" name="writer">
+    </div>
+    
+    <button type="button" class="btn btn-default" onclick="saveTextAsFile()">텍스트파일로 저장하기</button>
+  </form>
+  </div>
+</body>
+</html>
