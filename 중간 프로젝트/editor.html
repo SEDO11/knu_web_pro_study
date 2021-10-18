@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에디터</title>
+    <style>
+        button.active {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <p>밑에 칸을 눌러서 더블 클릭을 누르면 수정, 저장 가능</p>
+    <hr>
+    <div class="editor">
+        <button id="btn-bold"> <b>B</b> </button>
+        <button id="btn-italic"> <i>I</i> </button>
+        <button id="btn-underline"> <u>U</u> </button>
+        <button id="btn-strike"> <s>S</s> </button>
+        <button id="btn-ordered-list"> OL </button>
+        <button id="btn-unordered-list"> UL </button>
+        <div id="editor" contenteditable="true">내용</div>
+        <script src="editor.js"></script>
+</body>
+
+</html>

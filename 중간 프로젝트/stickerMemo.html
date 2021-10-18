@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스티커 메모</title>
+    <script src="">
+
+    </script>
     <style>
         html, body{
             margin: 0;
@@ -31,12 +34,21 @@
                 var textArea = document.getElementById("srcText");
 
                 // 스티커 메모 생성
-                win = window.open("", textTitle.value, "width=300, height=200");
+                win = window.open("", textTitle.value, "width=300, height=300");
                 win.window.open();
-                win.document.write("<html><head><title>" + textTitle.value + "</title></head>");
-                win.document.write("<body style=\"background-color:"+ backColor +" ;\"><h2 style=\"color:" + textColor + ";\">" + textTitle.value + "</h2><hr>");
-                win.document.write("<p style=\"color:" + textColor + ";\">" + textArea.value + "</p>");
-                win.document.close();        
+                win.document.write("<html><head><title>" + textTitle.value + "</title>    <link rel=\"stylesheet\" href=\"editor.css\"></head>");
+                win.document.write("<body style=\"background-color:"+ backColor +" ;\"><p color:" + textColor + ";>더블클릭하면 내용을 수정할 수 있습니다.</p><hr>");
+                win.document.write("<div class=\"editor\">");
+                win.document.write("<button class=\"active\" id=\"btn-bold\"> <b>B</b> </button>");
+                win.document.write("<button class=\"\" id=\"btn-italic\"> <i>I</i> </button>");
+                win.document.write("<button class=\"\" id=\"btn-underline\"> <u>U</u> </button>");
+                win.document.write("<button class=\"\" id=\"btn-strike\"> <s>S</s> </button>");
+                win.document.write("<button class=\"\" id=\"btn-ordered-list\"> OL </button>");
+                win.document.write("<button class=\"\" id=\"btn-unordered-list\"> UL </button>");
+                win.document.write("<div style=\"color:" + textColor + "; id=\"editor\" contenteditable=\"false\">"+ textArea.value +"</div>");
+                win.document.write("<script src=\"editor.js\"><\/scr"+"ipt>");
+                win.document.write("</body></html>");
+                win.document.close();
         }
         //텍스트 색상
         function setTextColor(color) {
@@ -54,7 +66,7 @@
         <h3>스티커 메모</h3>
     </header>
     <section>
-    <h4>제목</h4>
+    <h4>이름</h4>
     <input type="text" size="40" id="titleText">
     <h4>내용</h4>
     <textarea id="srcText" rows="10" cols="50"></textarea>
@@ -65,16 +77,16 @@
         <option value="red">빨강</option>
         <option value="blue">파랑</option>
         <option value="green">초록</option>
-        <option value="white">흰색</option>
+        <option value="yellow">노랑</option>
     </select>
 
     <h4>배경 색상: 기본 흰색</h4>
     <select name="backC" onchange="setBackColor(this)">
         <option value="white">흰색</option>
-        <option value="red">빨강</option>
-        <option value="blue">파랑</option>
-        <option value="green">초록</option>
-        <option value="black">검정</option>
+        <option value="rosybrown">로지브라운</option>
+        <option value="lightblue">연파랑</option>
+        <option value="lightseagreen">연초록</option>
+        <option value="gray">회색</option>
     </select>
     <br>
     <br>
