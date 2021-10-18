@@ -34,21 +34,11 @@
                 var textArea = document.getElementById("srcText");
 
                 // 스티커 메모 생성
-                win = window.open("", textTitle.value, "width=300, height=300");
-                win.window.open();
-                win.document.write("<html><head><title>" + textTitle.value + "</title>    <link rel=\"stylesheet\" href=\"editor.css\"></head>");
-                win.document.write("<body style=\"background-color:"+ backColor +" ;\"><p color:" + textColor + ";>더블클릭하면 내용을 수정할 수 있습니다.</p><hr>");
-                win.document.write("<div class=\"editor-list\">");
-                win.document.write("<button onclick=\"test()\" id=\"btn-bold\"> <b>B</b> </button>");
-                win.document.write("<button id=\"btn-italic\"> <i>I</i> </button>");
-                win.document.write("<button id=\"btn-underline\"> <u>U</u> </button>");
-                win.document.write("<button id=\"btn-strike\"> <s>S</s> </button>");
-                win.document.write("<button id=\"btn-ordered-list\"> OL </button>");
-                win.document.write("<button id=\"btn-unordered-list\"> UL </button>");
-                win.document.write("<div style=\"color:" + textColor + "; id=\"editor\" contenteditable=\"false\">"+ textArea.value + " " +"</div>");
-                win.document.write("<script src=\"editor.js\"><\/scr"+"ipt>");
-                win.document.write("</body></html>");
-                win.document.close();
+                win = window.open("", textTitle.value, "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+                win.document.body.innerHTML = "<div>";
+                win.document.head.innerHTML = "<style>";
+                win.document.style.innerHTML = "color: blue;";
+                win.document.div.innerHTML = "HTML";
         }
         //텍스트 색상
         function setTextColor(color) {

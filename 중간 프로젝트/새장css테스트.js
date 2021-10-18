@@ -34,12 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function test() {
+btnBold.addEventListener('click', function () {
     setStyle('bold');
-}
-// btnBold.addEventListener('click', function () {
-//     setStyle('bold');
-// });
+});
 btnItalic.addEventListener('click', function () {
     setStyle('italic');
 });
@@ -55,17 +52,17 @@ btnOrderedList.addEventListener('click', function () {
 btnUnorderedList.addEventListener('click', function () {
     setStyle('insertUnorderedList');
 });
-// editor.addEventListener('keydown', function () {
-//     checkStyle();
-// });
-// editor.addEventListener('mousedown', function () {
-//     checkStyle();
-// });
+editor.addEventListener('keydown', function () {
+    checkStyle();
+});
+editor.addEventListener('mousedown', function () {
+    checkStyle();
+});
 
 function setStyle(style) {
     document.execCommand(style); //글자 스타일 변경
     focusEditor();
-    // checkStyle();
+    checkStyle();
 }
 
 // 버튼 클릭 시 에디터가 포커스를 잃기 때문에 다시 에디터에 포커스를 해줌 
@@ -75,33 +72,33 @@ function focusEditor() {
     });
 }
 
-// function checkStyle() {
-//     if (isStyle('bold')) {
-//         btnBold..classList.add('active');
-//     } else {
-//         btnBold.classList.remove('active');
-//     } if (isStyle('italic')) {
-//         btnItalic.classList.add('active');
-//     } else {
-//         btnItalic.classList.remove('active');
-//     } if (isStyle('underline')) {
-//         btnUnderline.classList.add('active');
-//     } else {
-//         btnUnderline.classList.remove('active');
-//     } if (isStyle('strikeThrough')) {
-//         btnStrike.classList.add('active');
-//     } else {
-//         btnStrike.classList.remove('active');
-//     } if (isStyle('insertOrderedList')) {
-//         btnOrderedList.classList.add('active');
-//     } else {
-//         btnOrderedList.classList.remove('active');
-//     } if (isStyle('insertUnorderedList')) {
-//         btnUnorderedList.classList.add('active');
-//     } else {
-//         btnUnorderedList.classList.remove('active');
-//     }
-// }
+function checkStyle() {
+    if (isStyle('bold')) {
+        btnBold.classList.add('active');
+    } else {
+        btnBold.classList.remove('active');
+    } if (isStyle('italic')) {
+        btnItalic.classList.add('active');
+    } else {
+        btnItalic.classList.remove('active');
+    } if (isStyle('underline')) {
+        btnUnderline.classList.add('active');
+    } else {
+        btnUnderline.classList.remove('active');
+    } if (isStyle('strikeThrough')) {
+        btnStrike.classList.add('active');
+    } else {
+        btnStrike.classList.remove('active');
+    } if (isStyle('insertOrderedList')) {
+        btnOrderedList.classList.add('active');
+    } else {
+        btnOrderedList.classList.remove('active');
+    } if (isStyle('insertUnorderedList')) {
+        btnUnorderedList.classList.add('active');
+    } else {
+        btnUnorderedList.classList.remove('active');
+    }
+}
 
 //글자 스타일 변경
 function isStyle(style) {
