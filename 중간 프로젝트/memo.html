@@ -48,14 +48,24 @@
                 newMemo.append(memo.value);
                 newMemo.setAttribute("id", "myMemo");
                 obj.appendChild(newMemo);
-                document.getElementById("memo").value='';
+                document.getElementById("memo").value="";
                 newMemo.style.backgroundColor = "yellow"; //배경색
             } else if(memo.value.length > 100){
                 alert('글자를 너무 많이 입력했습니다. 최대 100자');
             } else {
                 alert('글자를 입력하지 않았습니다.');
             }
-            newMemo.onclick = function() {
+            var check = 0;
+            newMemo.onclick = function () {
+                if(check === 0) {
+                    this.style.textDecoration='line-through';
+                    check++;
+                } else {
+                    this.style.textDecoration='none';
+                    check--;
+                }
+            }
+            newMemo.ondblclick = function() {
                 var boolSelect = confirm("해당 메모를 삭제 하시겠습니까?");
                 if (boolSelect === true) { // 확인을 누를 시
                     var p = this.parentElement; //부모 HTML 태그 요소

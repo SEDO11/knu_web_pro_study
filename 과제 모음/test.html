@@ -1,0 +1,145 @@
+<pre id="code_1631175645487" class="java" data-ke-language="java" data-ke-type="codeblock"><code class="hljs"><span class="hljs-keyword">package</span> wook.co.weather.models.dto;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GpsTransfer</span> </span>{
+    
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> lat; <span class="hljs-comment">//gps로 반환받은 위도</span>
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> lon; <span class="hljs-comment">//gps로 반환받은 경도</span>
+    
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> xLat; <span class="hljs-comment">//x좌표로 변환된 위도</span>
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> yLon; <span class="hljs-comment">//y좌표로 변환된 경도</span>
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">GpsTransfer</span><span class="hljs-params">()</span> </span>{}
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">GpsTransfer</span><span class="hljs-params">(<span class="hljs-keyword">double</span> lat, <span class="hljs-keyword">double</span> lon)</span> </span>{
+            <span class="hljs-keyword">this</span>.lat = lat;
+            <span class="hljs-keyword">this</span>.lon = lon;
+        }
+    
+    
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getLat</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> lat;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getLon</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> lon;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getxLat</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> xLat;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getyLon</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> yLon;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLat</span><span class="hljs-params">(<span class="hljs-keyword">double</span> lat)</span> </span>{
+            <span class="hljs-keyword">this</span>.lat = lat;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLon</span><span class="hljs-params">(<span class="hljs-keyword">double</span> lon)</span> </span>{
+            <span class="hljs-keyword">this</span>.lon = lon;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setxLat</span><span class="hljs-params">(<span class="hljs-keyword">double</span> xLat)</span> </span>{
+            <span class="hljs-keyword">this</span>.xLat = xLat;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setyLon</span><span class="hljs-params">(<span class="hljs-keyword">double</span> yLon)</span> </span>{
+            <span class="hljs-keyword">this</span>.yLon = yLon;
+        }
+    
+        <span class="hljs-comment">//x,y좌표로 변환해주는것</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(GpsTransfer gpt, <span class="hljs-keyword">int</span> mode)</span></span>{
+    
+            <span class="hljs-keyword">double</span> RE = <span class="hljs-number">6371.00877</span>; <span class="hljs-comment">// 지구 반경(km)</span>
+            <span class="hljs-keyword">double</span> GRID = <span class="hljs-number">5.0</span>; <span class="hljs-comment">// 격자 간격(km)</span>
+            <span class="hljs-keyword">double</span> SLAT1 = <span class="hljs-number">30.0</span>; <span class="hljs-comment">// 투영 위도1(degree)</span>
+            <span class="hljs-keyword">double</span> SLAT2 = <span class="hljs-number">60.0</span>; <span class="hljs-comment">// 투영 위도2(degree)</span>
+            <span class="hljs-keyword">double</span> OLON = <span class="hljs-number">126.0</span>; <span class="hljs-comment">// 기준점 경도(degree)</span>
+            <span class="hljs-keyword">double</span> OLAT = <span class="hljs-number">38.0</span>; <span class="hljs-comment">// 기준점 위도(degree)</span>
+            <span class="hljs-keyword">double</span> XO = <span class="hljs-number">43</span>; <span class="hljs-comment">// 기준점 X좌표(GRID)</span>
+            <span class="hljs-keyword">double</span> YO = <span class="hljs-number">136</span>; <span class="hljs-comment">// 기1준점 Y좌표(GRID)</span>
+    
+            <span class="hljs-comment">//</span>
+            <span class="hljs-comment">// LCC DFS 좌표변환 ( code : "TO_GRID"(위경도-&gt;좌표, lat_X:위도,  lng_Y:경도), "TO_GPS"(좌표-&gt;위경도,  lat_X:x, lng_Y:y) )</span>
+            <span class="hljs-comment">//</span>
+    
+    
+            <span class="hljs-keyword">double</span> DEGRAD = Math.PI / <span class="hljs-number">180.0</span>;
+            <span class="hljs-keyword">double</span> RADDEG = <span class="hljs-number">180.0</span> / Math.PI;
+    
+            <span class="hljs-keyword">double</span> re = RE / GRID;
+            <span class="hljs-keyword">double</span> slat1 = SLAT1 * DEGRAD;
+            <span class="hljs-keyword">double</span> slat2 = SLAT2 * DEGRAD;
+            <span class="hljs-keyword">double</span> olon = OLON * DEGRAD;
+            <span class="hljs-keyword">double</span> olat = OLAT * DEGRAD;
+    
+            <span class="hljs-keyword">double</span> sn = Math.tan(Math.PI * <span class="hljs-number">0.25</span> + slat2 * <span class="hljs-number">0.5</span>) / Math.tan(Math.PI * <span class="hljs-number">0.25</span> + slat1 * <span class="hljs-number">0.5</span>);
+            sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+            <span class="hljs-keyword">double</span> sf = Math.tan(Math.PI * <span class="hljs-number">0.25</span> + slat1 * <span class="hljs-number">0.5</span>);
+            sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
+            <span class="hljs-keyword">double</span> ro = Math.tan(Math.PI * <span class="hljs-number">0.25</span> + olat * <span class="hljs-number">0.5</span>);
+            ro = re * sf / Math.pow(ro, sn);
+    
+            <span class="hljs-keyword">if</span> (mode == <span class="hljs-number">0</span>) {
+    <span class="hljs-comment">//            rs.lat = lat_X; //gps 좌표 위도</span>
+    <span class="hljs-comment">//            rs.lng = lng_Y; //gps 좌표 경도</span>
+                <span class="hljs-keyword">double</span> ra = Math.tan(Math.PI * <span class="hljs-number">0.25</span> + (gpt.getLat()) * DEGRAD * <span class="hljs-number">0.5</span>);
+                ra = re * sf / Math.pow(ra, sn);
+                <span class="hljs-keyword">double</span> theta = gpt.getLon() * DEGRAD - olon;
+                <span class="hljs-keyword">if</span> (theta &gt; Math.PI) theta -= <span class="hljs-number">2.0</span> * Math.PI;
+                <span class="hljs-keyword">if</span> (theta &lt; -Math.PI) theta += <span class="hljs-number">2.0</span> * Math.PI;
+                theta *= sn;
+                <span class="hljs-keyword">double</span> x = Math.floor(ra * Math.sin(theta) + XO + <span class="hljs-number">0.5</span>);
+                <span class="hljs-keyword">double</span> y = Math.floor(ro - ra * Math.cos(theta) + YO + <span class="hljs-number">0.5</span>);
+                gpt.setxLat(x);
+                gpt.setyLon(y);
+    <span class="hljs-comment">//            rs.x = Math.floor(ra * Math.sin(theta) + XO + 0.5);</span>
+    <span class="hljs-comment">//            rs.y = Math.floor(ro - ra * Math.cos(theta) + YO + 0.5);</span>
+            }
+            <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">//            rs.x = lat_X; //기존의 x좌표</span>
+    <span class="hljs-comment">//            rs.y = lng_Y; //기존의 경도</span>
+                <span class="hljs-keyword">double</span> xlat = gpt.getxLat();
+                <span class="hljs-keyword">double</span> ylon = gpt.getyLon();
+                <span class="hljs-keyword">double</span> xn = xlat - XO;
+                <span class="hljs-keyword">double</span> yn = ro - ylon + YO;
+                <span class="hljs-keyword">double</span> ra = Math.sqrt(xn * xn + yn * yn);
+                <span class="hljs-keyword">if</span> (sn &lt; <span class="hljs-number">0.0</span>) {
+                    ra = -ra;
+                }
+                <span class="hljs-keyword">double</span> alat = Math.pow((re * sf / ra), (<span class="hljs-number">1.0</span> / sn));
+                alat = <span class="hljs-number">2.0</span> * Math.atan(alat) - Math.PI * <span class="hljs-number">0.5</span>;
+    
+                <span class="hljs-keyword">double</span> theta = <span class="hljs-number">0.0</span>;
+                <span class="hljs-keyword">if</span> (Math.abs(xn) &lt;= <span class="hljs-number">0.0</span>) {
+                    theta = <span class="hljs-number">0.0</span>;
+                }
+                <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">if</span> (Math.abs(yn) &lt;= <span class="hljs-number">0.0</span>) {
+                        theta = Math.PI * <span class="hljs-number">0.5</span>;
+                        <span class="hljs-keyword">if</span> (xn &lt; <span class="hljs-number">0.0</span>) {
+                            theta = -theta;
+                        }
+                    }
+                    <span class="hljs-keyword">else</span> theta = Math.atan2(xn, yn);
+                }
+                <span class="hljs-keyword">double</span> alon = theta / sn + olon;
+    <span class="hljs-comment">//            rs.lat = alat * RADDEG; //gps 좌표 위도</span>
+    <span class="hljs-comment">//            rs.lng = alon * RADDEG; //gps 좌표 경도</span>
+                gpt.setLat(alat * RADDEG);
+                gpt.setLon(alon * RADDEG);
+            }
+        }
+    
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"GpsTransfer{"</span> +
+                    <span class="hljs-string">"lat="</span> + lat +
+                    <span class="hljs-string">", lon="</span> + lon +
+                    <span class="hljs-string">", xLat="</span> + xLat +
+                    <span class="hljs-string">", yLon="</span> + yLon +
+                    <span class="hljs-string">'}'</span>;
+        }
+    }</code></pre>

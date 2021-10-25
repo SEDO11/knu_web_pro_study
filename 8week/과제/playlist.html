@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: azure;
+            color: black;
+        }
+
+        header {
+            text-align: center;
+            height: 100px;
+            width: 600px;
+            border: solid 1px black;
+        }
+
+        form {
+            margin: auto;
+            text-align: center;
+        }
+
+        section {
+            float: left;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            border: solid 1px black;
+            padding: 50px;
+            margin: auto;
+        }
+
+        footer {
+            text-align: center;
+            clear: both;
+            height: 200px;
+            width: 600px;
+            border: solid 1px black;
+        }
+
+        div {
+            margin: 10px 0 10px 0;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: medium;
+            margin: 0;
+        }
+    </style>
+    <title>메모</title>
+    <script>
+        var i = 0;
+        function createDIV() {
+            var obj = document.getElementById("parent");
+            var newDIV = document.createElement("div"); //동적 객체 생성
+            var memo = document.getElementById("memo");
+
+            newDIV.append(memo.value);
+            newDIV.setAttribute("id", "myList"); //속성, 값 부여
+            newDIV.style.border = "solid 1px black";
+            // newDIV.style.backgroundColor = "yellow"; //배경색
+            newDIV.onclick = function () {
+                var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+                if (boolSelect === true) { // 확인을 누를 시
+                    var p = this.parentElement; //부모 HTML 태그 요소
+                    p.removeChild(this); //자신을 부모로 부터 제거
+                } else { // 취소를 누를 시
+                    //아무일도 일어나지 않음
+                }
+            };
+            obj.appendChild(newDIV);
+            document.getElementById("memo").value = null; //노래가 추가되면 입력창 리셋
+        }
+
+        function del(idName) {
+            var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+                if (boolSelect === true) { // 확인을 누를 시
+                    const div = document.getElementById(idName);
+                    div.remove(); //기존에 생성 되있던 div 제거
+                } else { // 취소를 누를 시
+                    //아무일도 일어나지 않음
+                }
+        }
+
+        //글자 색 변경
+        function TextChange(color) {
+            var textColor = color;
+            document.getElementById("backBody").style.color = textColor;
+        }
+
+        // 배경화면 색 변경
+        function backChange(color) {
+            var textColor = color;
+            document.getElementById("backBody").style.backgroundColor = textColor;
+        }
+    </script>
+</head>
+
+<body id="backBody">
+    <header>
+        <h1>My PlayList</h1>
+    </header>
+    <section id="parent">
+        <input type="text" id="memo" placeholder="가수 이름과 노래 제목을 입력하세요." size="30">
+        <button onclick="createDIV()">노래 추가</button>
+        <br>
+        <br>
+        <p>곡 목록</p>
+        <br>
+        <div id="myList1" onclick="del('myList1')">BTS 버터</div>
+        <div id="myList2" onclick="del('myList2')">아이유 셀레브리티</div>
+        <div id="myList3" onclick="del('myList3')">나훈아 테스형</div>
+        <div id="myList4" onclick="del('myList4')">저스틴비버 STAY</div>
+        <div id="myList5" onclick="del('myList5')">박창근 그날들</div>
+    </section>
+    <footer>
+        <h4>텍스트 색깔 바꾸기</h4>
+        <button onclick="TextChange('black')">검정</button>
+        <button onclick="TextChange('red')">빨강</button>
+        <button onclick="TextChange('green')">초록</button>
+        <button onclick="TextChange('blue')">파랑</button>
+        <button onclick="TextChange('white')">흰색</button>
+
+        <h4>배경화면 색깔 바꾸기</h4>
+        <button onclick="backChange('rosybrown')">로지브라운</button>
+        <button onclick="backChange('lightseagreen')">연초록</button>
+        <button onclick="backChange('lightblue')">연파랑</button>
+        <button onclick="backChange('gray')">회색</button>
+        <button onclick="backChange('azure')">아주르</button>
+    </footer>
+</body>
+
+</html>

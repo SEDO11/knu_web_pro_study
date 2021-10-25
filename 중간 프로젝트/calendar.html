@@ -2,20 +2,28 @@
 <html>
 
 <head>
-    <title>달력</title>
+    <title>달력, 시간표</title>
     <style>
-        #sunday{
+        td:hover{
+            background-color: skyblue;
+            color: black;
+        }
+        #sunday {
             color: red;
         }
-        #sathurday{
+
+        #sathurday {
             color: blue;
         }
-        #tbCalendarYM{
+
+        .tbTitle {
             font-weight: bold;
         }
-        .monthMove{
+
+        .monthMove {
             cursor: pointer;
         }
+
         td {
             width: 70px;
             height: 70px;
@@ -26,10 +34,9 @@
             border-radius: 8px;
             /*모서리 둥글게*/
         }
-        td{
-            text-align: center;
-        }
-        table{
+
+        table {
+            margin: 10px 30px;
             border: 3px black solid;
             float: left;
         }
@@ -37,6 +44,45 @@
     <script>
         var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
         var date = new Date();//today의 Date를 세어주는 역할
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        var dayOfWeek = week[today.getDay()];
+
+        //시간표 당일 색깔 칠하기
+        window.onload = function () {
+            //일
+            var mon = document.getElementById("mon").innerText;
+            var two = document.getElementById("two").innerText;
+            var wed = document.getElementById("wed").innerText;
+            var thur = document.getElementById("thur").innerText;
+            var fri = document.getElementById("fri").innerText;
+            var sat = document.getElementById("sat").innerText;
+            
+            //해당 일 일때 노란색으로 색칠
+            if (dayOfWeek === mon) {
+                document.getElementById("mon").style.backgroundColor = "yellow";
+                document.getElementById("mon").style.fontWeight = "bold";
+                document.getElementById("webPro1").style.backgroundColor = "yellow";
+                document.getElementById("mobile").style.backgroundColor = "yellow";
+            } else if (dayOfWeek === two) {
+                document.getElementById("two").style.backgroundColor = "yellow";
+                document.getElementById("comGra").style.backgroundColor = "yellow";
+            } else if (dayOfWeek === wed) {
+                document.getElementById("wed").style.backgroundColor = "yellow";
+                document.getElementById("wed").style.fontWeight = "bold";
+                document.getElementById("ai").style.backgroundColor = "yellow";
+                document.getElementById("ai").style.fontWeight = "bold";
+                document.getElementById("webCom").style.backgroundColor = "yellow";
+                document.getElementById("webCom").style.fontWeight = "bold";
+            } else if (dayOfWeek === thur) {
+                document.getElementById("thur").style.backgroundColor = "yellow";
+                document.getElementById("es").style.backgroundColor = "yellow";
+            } else if (dayOfWeek === fri) {
+                document.getElementById("fri").style.backgroundColor = "yellow";
+                document.getElementById("webPro2").style.backgroundColor = "yellow";
+            } else if (dayOfWeek === sat) {
+                document.getElementById("sat").style.backgroundColor = "yellow";
+            } else {}
+        }
 
         function prevCalendar() {//이전 달
             // 이전 달을 today에 값을 저장하고 달력에 today를 넣어줌
@@ -52,10 +98,6 @@
             //getMonth()는 현재 달을 받아 오므로 다음달을 출력하려면 +1을 해줘야함
             today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
             buildCalendar();//달력 cell 만들어 출력
-        }
-        
-        function yearMonth() {
-            
         }
 
         function buildCalendar() {//현재 달 달력 만들기
@@ -118,39 +160,125 @@
                     && today.getMonth() == date.getMonth()
                     && i == date.getDate()) {
                     //달력에 있는 년,달과 내 컴퓨터의 로컬 년,달이 같고, 일이 오늘의 일과 같으면
-                    cell.bgColor = "yellow";//셀의 배경색을 노랑으로 
-                    cell.innerHTML = "today"
+                    cell.style.backgroundColor = "yellow";//셀의 배경색을 노랑으로 
+                    cell.style.fontWeight = "bold";// cell.style. //오늘 날짜에 today라는 글을 넣음
+
                 }
+
             }
         }
     </script>
 </head>
 
 <body>
-    <p></p>
-    <h3>달력</h3>
-    <table id="calendar">
-        <tr>
-            <!-- label은 마우스로 클릭을 편하게 해줌 -->
-            <td><label class="monthMove" onclick="prevCalendar()">&lt;</label>
-            </td>
-            <td id="tbCalendarYM" colspan="5" onclick="yearMonth()">
-                yyyy년 m월</td>
-            <td><label class="monthMove" onclick="nextCalendar()">&gt;</label></td>
-        </tr>
-        <tr>
-            <td id="sunday">일</td>
-            <td>월</td>
-            <td>화</td>
-            <td>수</td>
-            <td>목</td>
-            <td>금</td>
-            <td id="sathurday">토</td>
-        </tr>
-    </table>
-    <script language="javascript" type="text/javascript">
-        buildCalendar();//
-    </script>
+    <section id="sec">
+        <table id="calendar">
+            <tr>
+                <!-- label은 마우스로 클릭을 편하게 해줌 -->
+                <td><label class="monthMove" onclick="prevCalendar()">&lt;</label></td>
+                <td class="tbTitle" id="tbCalendarYM" colspan="5">yyyy년 m월</td>
+                <td><label class="monthMove" onclick="nextCalendar()">&gt;</label></td>
+            </tr>
+            <tr>
+                <td id="sunday">일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td id="sathurday">토</td>
+            </tr>
+        </table>
+        <script>
+            buildCalendar();
+        </script>
+        <table>
+            <tr>
+                <!-- label은 마우스로 클릭을 편하게 해줌 -->
+                <td></td>
+                <td class="tbTitle" colspan="5">시간표</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="mon">월</td>
+                <td id="two">화</td>
+                <td id="wed">수</td>
+                <td id="thur">목</td>
+                <td id="fri">금</td>
+                <td id="sat">토</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td rowspan="3" id="webPro1" onclick="alert('시간: 월요일 9시~12시\n강의실: 8공816\n구분: 전공필수')">웹프로그래밍</td>
+                <td rowspan="3" id="comGra" onclick="alert('시간: 화요일 9시~12시\n강의실: 8공717\n구분: 전공선택')">컴퓨터 그래픽스</td>
+                <td rowspan="3" id="ai" onclick="alert('시간: 수요일 9시~12시\n강의실: 8공817\n구분: 전공필수')">인공지능</td>
+                <td rowspan="3" id="es" onclick="alert('시간: 목요일 9시~12시\n강의실: 8공716\n구분: 전공선택')">임베디드 시스템</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="webPro2" onclick="alert('시간: 금요일 10시~11시\n강의실: 8공816\n구분: 전공필수')">웹프로그래밍</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td rowspan="3" id="mobile" onclick="alert('시간: 월요일 13시~16시\n강의실: 8공717\n구분: 전공선택')">모바일 프로그래밍</td>
+                <td></td>
+                <td rowspan="3" id="webCom" onclick="alert('시간: 수요일 13시~16시\n강의실: 8공716\n구분: 전공선택')">웹서비스 컴퓨팅</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </section>
 </body>
 
 </html>

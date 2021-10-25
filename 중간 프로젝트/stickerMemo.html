@@ -10,14 +10,17 @@
 
     </script>
     <style>
-        html, body{
+        html,
+        body {
             margin: 0;
         }
-        header{
+
+        header {
             text-align: center;
             border-bottom: 1px solid black;
         }
-        section{
+
+        section {
             text-align: center;
         }
     </style>
@@ -30,25 +33,32 @@
             if (win == null || win.closed)
                 //메모 제목
                 var textTitle = document.getElementById("titleText");
-                //메모 내용
-                var textArea = document.getElementById("srcText");
-
-                // 스티커 메모 생성
-                win = window.open("", textTitle.value, "width=300, height=300");
-                win.window.open();
-                win.document.write("<html><head><title>" + textTitle.value + "</title>    <link rel=\"stylesheet\" href=\"editor.css\"></head>");
-                win.document.write("<body style=\"background-color:"+ backColor +" ;\"><p color:" + textColor + ";>더블클릭하면 내용을 수정할 수 있습니다.</p><hr>");
-                win.document.write("<div class=\"editor-list\">");
-                win.document.write("<button onclick=\"test()\" id=\"btn-bold\"> <b>B</b> </button>");
-                win.document.write("<button id=\"btn-italic\"> <i>I</i> </button>");
-                win.document.write("<button id=\"btn-underline\"> <u>U</u> </button>");
-                win.document.write("<button id=\"btn-strike\"> <s>S</s> </button>");
-                win.document.write("<button id=\"btn-ordered-list\"> OL </button>");
-                win.document.write("<button id=\"btn-unordered-list\"> UL </button>");
-                win.document.write("<div style=\"color:" + textColor + "; id=\"editor\" contenteditable=\"false\">"+ textArea.value + " " +"</div>");
-                win.document.write("<script src=\"editor.js\"><\/scr"+"ipt>");
-                win.document.write("</body></html>");
-                win.document.close();
+            //메모 내용
+            var textArea = document.getElementById("srcText");
+            if (textTitle.value.length > 0 && textTitle.value.length <= 10) {
+                if (textArea.value.length > 0) {
+                    // 스티커 메모 생성
+                    win = window.open("", textTitle.value, "width=300, height=300");
+                    win.window.open();
+                    win.document.write("<html><head><title>" + textTitle.value + "</title>    <link rel=\"stylesheet\" href=\"editor.css\"></head>");
+                    win.document.write("<body style=\"background-color:" + backColor + " ;\"><p color:" + textColor + ";>더블클릭하면 내용을 수정할 수 있습니다.</p><hr>");
+                    win.document.write("<div class=\"editor-list\">");
+                    win.document.write("<button onclick=\"bold()\" id=\"btn-bold\"> <b>B</b> </button>");
+                    win.document.write("<button onclick=\"italic()\"> <i>I</i> </button>");
+                    win.document.write("<button onclick=\"underline()\"> <u>U</u> </button>");
+                    win.document.write("<button onclick=\"strike()\"> <s>S</s> </button>");
+                    win.document.write("<button onclick=\"orderedlist()\"> OL </button>");
+                    win.document.write("<button onclick=\"unorderedlist()\"> UL </button>");
+                    win.document.write("<div style=\"color:" + textColor + "; id=\"editor\" contenteditable=\"false\">" + textArea.value + " " + "</div>");
+                    win.document.write("<script src=\"stickerMemo.js\"><\/scr" + "ipt>");
+                    win.document.write("</body></html>");
+                    win.document.close();
+                } else {
+                    alert('내용을 입력해 주세요.');
+                }
+            } else {
+                alert('제목은 1자 이상 10자 이하여야 합니다.');
+            }
         }
         //텍스트 색상
         function setTextColor(color) {
@@ -66,31 +76,31 @@
         <h3>스티커 메모</h3>
     </header>
     <section>
-    <h4>이름</h4>
-    <input type="text" size="40" id="titleText">
-    <h4>내용</h4>
-    <textarea id="srcText" rows="10" cols="50"></textarea>
-    <br>
-    <h4>텍스트 색상: 기본 검정</h4>
-    <select name="textC" onchange="setTextColor(this)">
-        <option value="black">검정</option>
-        <option value="red">빨강</option>
-        <option value="blue">파랑</option>
-        <option value="green">초록</option>
-        <option value="yellow">노랑</option>
-    </select>
+        <h4>이름</h4>
+        <input type="text" size="40" id="titleText">
+        <h4>내용</h4>
+        <textarea id="srcText" rows="10" cols="50"></textarea>
+        <br>
+        <h4>텍스트 색상: 기본 검정</h4>
+        <select name="textC" onchange="setTextColor(this)">
+            <option value="black">검정</option>
+            <option value="red">빨강</option>
+            <option value="blue">파랑</option>
+            <option value="green">초록</option>
+            <option value="yellow">노랑</option>
+        </select>
 
-    <h4>배경 색상: 기본 흰색</h4>
-    <select name="backC" onchange="setBackColor(this)">
-        <option value="white">흰색</option>
-        <option value="rosybrown">로지브라운</option>
-        <option value="lightblue">연파랑</option>
-        <option value="lightseagreen">연초록</option>
-        <option value="gray">회색</option>
-    </select>
-    <br>
-    <br>
-    <button onclick="stickerMemo()">스티커 메모 생성</button>
+        <h4>배경 색상: 기본 흰색</h4>
+        <select name="backC" onchange="setBackColor(this)">
+            <option value="white">흰색</option>
+            <option value="rosybrown">로지브라운</option>
+            <option value="lightblue">연파랑</option>
+            <option value="lightseagreen">연초록</option>
+            <option value="gray">회색</option>
+        </select>
+        <br>
+        <br>
+        <button onclick="stickerMemo()">스티커 메모 생성</button>
     </section>
 </body>
 

@@ -5,7 +5,8 @@
     font-style: normal;
 }
 li:hover{
-    background-color: skyblue;
+    background-color: #2c2cfd;
+    color: white;
     border-radius: 50px;
 }
 .bg{ /*메인화면 사진 적용*/

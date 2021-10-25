@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 스토리지</title>
+    <script>
+        //바로 실행
+        window.onload = shellGame;
+
+        function shellGame() {
+            //로컬스토리지에 키, 값 지정
+            localStorage.setItem("shell1", "pea");
+            localStorage.setItem("shell2", "empty");
+            localStorage.setItem("shell3", "empty");
+        
+            //각 키에 새로운 값들 지정
+            localStorage["shell1"] = "empty";
+            localStorage["shell2"] = "pea";
+            localStorage["shell3"] = "empty";
+
+            //shell2의 값을 shell 1으로
+            var value = localStorage.getItem("shell2");
+            localStorage.setItem("shell1", value);
+
+            //shell3의 값을 shell2로
+            value = localStorage.getItem("shell3");
+            localStorage["shell2"] = value;
+
+            //키: shell2, 값: pea
+            var key = "shell2";
+            localStorage[key] = "pea";
+            //키: shell1, 값: empty
+            key = "shell1";
+            localStorage[key] = "empty";
+            //키: shell1, 값: empty
+            key = "shell3";
+            localStorage[key] = "empty";
+
+            for(var i=0; i<localStorage.length; i++) {
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                alert(key + ": " + value);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

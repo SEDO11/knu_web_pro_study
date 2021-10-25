@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음악 추가 시키기</title>
+    <script>
+        window.onload = start; //이전 데이터 가져오기
+        function start() {
+            var value = localStorage.getItem('localSonglist');
+            if (value != null) {
+                var storedStorage = JSON.parse(value);
+                for (var i = 0; i < storedStorage.length; i++) {
+                    var li = document.createElement("li");
+                    li.innerHTML = storedStorage[i];
+                    var ul = document.getElementById("playlist");
+                    ul.appendChild(li);
+                }
+            }
+        }
+        var Songlist = new Array();
+        function AddSong() {
+            var input = document.getElementById("songName"); if (input.value != "") {
+                var li = document.createElement("li"); 
+                li.innerHTML = input.value;
+                var str = '<input type="button" id="btn" onclick="del()" value="삭제"/>';
+                li.innerHTML += str;
+                var ol = document.getElementById("playlist"); 
+                ol.appendChild(li);
+                Songlist.push(input.value);
+                localStorage.setItem("localSonglist", JSON.stringify(Songlist));
+            }
+            //키: localSonglist, 값: JSON.stringify(Songlist)
+        }
+
+        function del() {
+            var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+            if (boolSelect === true) { // 확인을 누를 시
+                localStorage.removeItem('localSonglist'); //로컬 데이터 제거
+                var p = this.parentElement; //부모 HTML 태그 요소
+                p.removeChild(this); //자신을 부모로 부터 제거
+            } else { // 취소를 누를 시
+                //아무일도 일어나지 않음
+            }
+        };
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="songName">
+    <button onclick="AddSong()">노래 추가</button>
+    <ul id="playlist">
+    </ul>
+</body>
+
+</html>

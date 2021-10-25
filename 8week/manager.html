@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong</title>
+    <!-- <script src="manager.js"></script> -->
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        window.onload = function () {
+    var worker = new Worker("worker.js");
+
+    worker.postMessage("ping");
+    worker.onmessage = function(event) {
+        var msg = "Worker says" + event.data;
+        alert(msg);
+        document.getElementById("output").innerHTML = msg;
+    }
+}
+    </script>
+</body>
+</html>

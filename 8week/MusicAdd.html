@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음악 추가 시키기</title>
+    <script>
+        window.onload = start;
+        function start() {
+            for (var i = 0; i < localStorage.length; i++) {//로컬스토리지 길이만큼 반복
+                var key = localStorage.key(i);
+                var li = document.createElement("li"); 
+                li.innerHTML = localStorage[key];
+                var ul = document.getElementById("playlist"); 
+                ul.appendChild(li);
+            }
+        }
+        function addSong() {
+            var input = document.getElementById("songName"); 
+            var add = document.createElement("li");
+            add.innerHTML = input.value;
+            var ul = document.getElementById("playlist"); 
+            ul.appendChild(add);
+            var str = "list" + localStorage.length; 
+            localStorage.setItem(str, input.value);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="songName">
+    <button onclick="addSong()">노래 추가</button>
+    <ul id="playlist">
+        <li></li>
+    </ul>
+</body>
+
+</html>
