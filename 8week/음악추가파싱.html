@@ -9,6 +9,7 @@
     <script>
         window.onload = start; //이전 데이터 가져오기
         function start() {
+            var list = document.createElement("li");
             var value = localStorage.getItem('localSonglist');
             if (value != null) {
                 var storedStorage = JSON.parse(value);
@@ -20,27 +21,56 @@
                 }
             }
         }
+
+        // var Songlist = new Array();
+        // function AddSong() {
+        //     var ul = document.getElementById("playlist");
+        //     var li = document.createElement("li"); //동적 객체 생성
+        //     var input = document.getElementById("songName");
+        //     if (input.value != "") {
+        //         li.append(songName.value);
+        //         li.setAttribute("id", "myList"); //속성, 값 부여
+        //         li.style.border = "solid 1px black";
+        //         // newDIV.style.backgroundColor = "yellow"; //배경색
+        //         li.onclick = function () {
+        //             var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+        //             if (boolSelect === true) { // 확인을 누를 시
+        //                 var p = this.parentElement; //부모 HTML 태그 요소
+        //                 p.removeChild(this); //자신을 부모로 부터 제거
+        //             } else { // 취소를 누를 시
+        //                 //아무일도 일어나지 않음
+        //             }
+        //         }
+        //         ul.appendChild(li);
+        //         Songlist.push(input.value);
+        //         //키: localSonglist, 값: JSON.stringify(Songlist)
+        //         localStorage.setItem("localSonglist", JSON.stringify(Songlist));
+        //         document.getElementById("songName").value = null; //노래가 추가되면 입력창 리셋
+        //     }
+        // }
+        
+        //노래 추가
         var Songlist = new Array();
-        function AddSong() {
-            var input = document.getElementById("songName"); if (input.value != "") {
-                var li = document.createElement("li"); 
-                li.innerHTML = input.value;
-                var str = '<input type="button" id="btn" onclick="del()" value="삭제"/>';
-                li.innerHTML += str;
-                var ol = document.getElementById("playlist"); 
-                ol.appendChild(li);
-                Songlist.push(input.value);
-                localStorage.setItem("localSonglist", JSON.stringify(Songlist));
+        function addSong() {
+            var input = document.getElementById("songName"); 
+                if (input.value != "") {
+                    var li = document.createElement("li"); 
+                    li.innerHTML = input.value;
+                    var ul = document.getElementById("playlist"); 
+                    ul.appendChild(li);
+                    Songlist.push(input.value);
+                    //키: localSonglist, 값: JSON.stringify(Songlist)
+                    localStorage.setItem("localSonglist", JSON.stringify(Songlist));
+                    document.getElementById("songName").value = null; //노래가 추가되면 입력창 리셋
             }
-            //키: localSonglist, 값: JSON.stringify(Songlist)
         }
 
-        function del() {
-            var boolSelect = confirm("해당 노래를 리스트에서 삭제 하시겠습니까?");
+        //노래 삭제
+        function delSong() {
+            var boolSelect = confirm("노래들을 리스트에서 삭제 하시겠습니까?");
             if (boolSelect === true) { // 확인을 누를 시
                 localStorage.removeItem('localSonglist'); //로컬 데이터 제거
-                var p = this.parentElement; //부모 HTML 태그 요소
-                p.removeChild(this); //자신을 부모로 부터 제거
+                window.location.reload();
             } else { // 취소를 누를 시
                 //아무일도 일어나지 않음
             }
@@ -51,7 +81,8 @@
 
 <body>
     <input type="text" id="songName">
-    <button onclick="AddSong()">노래 추가</button>
+    <button onclick="addSong()">노래 추가</button>
+    <button onclick="delSong()">노래 삭제</button>
     <ul id="playlist">
     </ul>
 </body>
