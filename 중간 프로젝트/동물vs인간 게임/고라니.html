@@ -159,6 +159,8 @@
         }
 
         function play(e) {
+            var replay = document.getElementById('sound');
+            replay.innerHTML = "다시 듣기";
             var audio = new Audio('고라니.mp3');
             audio.volume = 0.6;
             audio.play();
@@ -184,7 +186,7 @@
     <nav>
     </nav>
     <section>
-        <button onclick="play()">소리 듣기</button>
+        <button id="sound" onclick="play()">소리 듣기</button>
         <button id="reset" style="display: none;" onclick="window.location.reload()">초기화</button>
         <p id="result"></p>
         <article id="human">
