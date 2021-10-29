@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음악 추가 시키기</title>
+    <script>
+        // if (window.localStorage) {
+        //     //configs
+        //     var updateInterval = 3000; //ms
+        //     function randomRange() {
+        //         return Math.floor(Math.random() * 3) + 1; // [1..3] range
+        //     }
+
+
+        //     var counter = +localStorage.getItem('counter');
+        //     if (!counter) { //first load
+        //         counter = 23000;
+        //     } else { //simulate randomness that would have happened while the user was away from the page
+        //         var lastSessionEnd = +localStorage.getItem('lastSessionEnd');
+        //         for (var l = Math.floor((getUnixTimeStamp() - lastSessionEnd) * 1000 / updateInterval); l--;) {
+        //             counter += randomRange();
+        //         }
+        //     }
+
+        //     var liveNumbers = document.getElementById('liveNumbers'); //cache DOM query
+        //     function refreshDisplay() {
+        //         liveNumbers.innerHTML = commaSeparateNumber(counter);
+        //     }
+        //     refreshDisplay();
+        //     setInterval(function () {
+        //         counter += randomRange();
+        //         refreshDisplay();
+        //     }, updateInterval);
+
+        //     function commaSeparateNumber(val) {
+        //         while (/(\d+)(\d{3})/.test(val.toString())) {
+        //             val = val.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //         }
+        //         return val;
+        //     }
+
+        //     function getUnixTimeStamp() {
+        //         return Math.floor(Date.now() / 1000);
+        //     }
+
+        //     window.addEventListener('beforeunload', function () {
+        //         localStorage.setItem('counter', counter);
+        //         localStorage.setItem('lastSessionEnd', getUnixTimeStamp());
+        //     });
+        // } else {
+        //     // Sorry! No Web Storage support..
+        // }
+
+        //Local storage - counter - reload the page several times
+
+        // console.log('Start');
+        // var live = document.getElementById("liveNumbers");
+        // var n = localStorage.getItem('counter');
+        // if (n === null) {
+        //     n = 0;
+        // } else {
+        //     n++;
+        // }
+        // console.log(n);
+        // localStorage.setItem("counter", n);
+        // live.innerText = n + "";
+        // console.log('End');
+
+        const form = document.querySelector('.js-form');
+        const input = form.querySelector('input');
+        const greeting = document.querySelector('.js-greetings');
+
+
+        const GREETING_LS = "currentStorage";
+        const SHOWING_CN = "showing";
+
+        function paintText(text) {
+            greeting.classList.add(SHOWING_CN);
+            greeting.innerHTML = `Hello ! ${text}`;
+        }
+        function loadName() {
+            // localstorage 에서 값 가져오기
+            const currentUser = localStorage.getItem(GREETING_LS);
+            if (currentUser === null) {
+                console.log('there is no localstorage')
+            } else {
+                paintText(currentUser);
+            }
+        }
+
+        function init() {
+            loadName();
+        }
+
+        init();
+    </script>
+</head>
+
+<body>
+    <span id="liveNumbers">23,000</span>
+</body>
+
+</html>

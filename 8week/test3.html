@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+</head>
+
+<body>
+
+    <form class="js-form form">
+        <input type="text" placeholder="what is your name?">
+    </form>
+    <h4 class="js-greetings greetings"></h4>
+
+    <script>
+        const form = document.querySelector('.js-form');
+        const input = form.querySelector('input');
+        const greeting = document.querySelector('.js-greetings');
+
+
+        const GREETING_LS = "currentStorage";
+        const SHOWING_CN = "showing";
+
+        function paintText(text) {
+            greeting.classList.add(SHOWING_CN);
+            greeting.innerHTML = `Hello ! ${text}`;
+        }
+        function loadName() {
+            // localstorage 에서 값 가져오기
+            const currentUser = localStorage.getItem(GREETING_LS);
+            if (currentUser === null) {
+                console.log('there is no localstorage')
+            } else {
+                paintText(currentUser);
+            }
+        }
+
+        function init() {
+            loadName();
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

@@ -6,8 +6,12 @@ var pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글
 
 //내용 입력 확인
 function non(e) {
-    if (e.value === "") {
-        alert("아무것도 입력하지 않았습니다.");
+    var worker = new Worker("worker.js");
+
+    worker.postMessage("");
+    worker.onmessage = function (event) {
+        var msg = "Worker: " + event.data;
+        alert(msg);
     }
 }
 
@@ -81,7 +85,7 @@ function mailCheck(e) {
     //숫자, 영어, 특수문자만 입력
     if (((pattern_num.test(mail)) || (pattern_eng.test(mail))) && (pattern_spc_at.test(mail)) && !(pattern_kor.test(mail))) {
         if (mail.length >= 10 && mail.length <= 30) {
-            if(mail.slice(mail.length-4) === ".com" || mail.slice(mail.length-4) === ".net") {
+            if (mail.slice(mail.length - 4) === ".com" || mail.slice(mail.length - 4) === ".net") {
                 alert('이메일이 제대로 입력되었습니다.');
             } else {
                 alert('이메일형식이 옳바르지 않습니다. \n(.com or .net이 아닙니다.)');

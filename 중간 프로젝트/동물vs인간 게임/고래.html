@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고래</title>
+    <style>
+        #result {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        /* 태그 */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: azure;
+            font-family: "NEXON Lv1 Gothic OTF";
+            color: skyblue;
+        }
+
+        header {
+            width: 100%;
+            height: 10%;
+            float: left;
+            text-align: center;
+        }
+
+        nav {
+            width: 100%;
+            height: 10%;
+            float: left;
+        }
+
+        article {
+            float: left;
+            padding: 10px 50px 10px 50px;
+            text-align: left;
+            width: 30%;
+            border: dashed skyblue 2px;
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+            padding-bottom: 10px;
+            text-indent: 20px;
+        }
+
+        section {
+            width: 100%;
+            height: auto;
+            float: left;
+            text-align: center;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            clear: both;
+            text-align: center;
+        }
+
+        h2 {
+            padding: 10px;
+            text-align: center;
+            color: skyblue;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+            padding: 8px;
+        }
+
+        span {
+            color: darkblue;
+            font-size: 20px;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto 20px auto;
+            width: 70%;
+        }
+
+        .btnselect {
+            margin: 0 10px 0 10px;
+            width: 100px;
+            font-size: 20px;
+        }
+
+        button {
+            margin: 0 10px 0 10px;
+            width: 100px;
+            font-size: 20px;
+            border: 1px solid skyblue;
+            background-color: white;
+            color: blue;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        #human {
+            width: 50%;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        #animal {
+            width: 50%;
+            float: right;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        var cho = null;
+        var playstart = 0;
+        function choice(e) {
+            var result = document.getElementById("result");
+            var human = document.getElementById("human");
+            var animal = document.getElementById("animal");
+            var video = document.getElementById("videolink");
+            if (playstart === 1) {
+                if (cho !== null) { //이미 하나 선택했는데 또 선택할 경우 
+                    alert('다시하려면 초기화를 누르세요.');
+                } else if (e === 1) { //사람을 선택했을 경우
+                    result.innerHTML = "정답입니다."
+                    result.style.color = "green"
+                    human.style.backgroundColor = "green"
+                    cho = 1;
+                    show(); //초기화 버튼 보이게 하기
+                    video.innerHTML = "영상보러가기";
+                } else if (e === 2) { //동물을 선택했을 경우
+                    result.innerHTML = "틀렸습니다."
+                    result.style.color = "red"
+                    animal.style.backgroundColor = "rosybrown";
+                    cho = 2;
+                    show(); //초기화 버튼 보이게 하기
+                    video.innerHTML = "영상보러가기";
+                }
+            } else {
+                alert('소리를 듣지 않고 선택할 수 없습니다.');
+            }
+        }
+
+        function play(e) { //오디오
+            var audio = new Audio('고래.mp3');
+            audio.volume = 0.4; //볼륨 조절
+            audio.play();
+            playstart = 1;
+        }
+
+        function win(e) { //새창에서 영상보기
+            window.open("https://" + e, "", "left=500,top=500,width=600,height=400");
+        }
+
+        function show() { //초기화, 영상보러가는 버튼 보이게만들기
+            document.getElementById("reset").style.display = "inline-block";
+            document.getElementById("videolink").style.display = "inline-block";
+        }
+
+    </script>
+</head>
+
+<body id="back">
+    <header>
+        <h1>고래인가 사람인가?</h1>
+    </header>
+    <nav>
+    </nav>
+    <section>
+        <button onclick="play()">소리 듣기</button>
+        <button id="reset" style="display: none;" onclick="window.location.reload()">초기화</button>
+        <p id="result"></p>
+        <article id="human">
+            <h2>사람</h2>
+            <img src="사람.jpg" alt="">
+            <button class="btnselect" onclick="choice(1)">선택</button>
+        </article>
+        <article id="animal">
+            <h2>고래</h2>
+            <img src="고래.jpg" alt="">
+            <button class="btnselect" onclick="choice(2)">선택</button>
+        </article>
+    </section>
+    <footer>
+        <button id="videolink" style="display: none;"
+            onclick="win('www.youtube.com/watch?v=5Oe66Q8HgTc&ab_channel=Jimund')">영상보러가기</button>
+    </footer>
+</body>
+
+</html>
