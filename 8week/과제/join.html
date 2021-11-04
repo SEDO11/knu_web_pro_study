@@ -1,13 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="join.css">
-    <script src="join.js"></script>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #hobbyImg {
+            width: 50%;
+        }
+
+        #profileImg {
+            margin: 0;
+            float: right;
+            width: 180px;
+        }
+
+        #cb input {
+            cursor: pointer;
+        }
+
+        #rdb input {
+            cursor: pointer;
+        }
+
+        #btnJoin {
+            width: 45%;
+            margin: 10px;
+            padding: 21px 0 17px;
+            border: 0;
+            cursor: pointer;
+            color: blue;
+            background-color: skyblue;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        #btnJoin:hover {
+            border-radius: 30px;
+        }
+
+        article>form>span {
+            display: block;
+            width: 100%;
+            height: 51px;
+            border: solid 1px #dadada;
+            padding: 10px 14px 10px 14px;
+            box-sizing: border-box;
+            background: #fff;
+            position: relative;
+        }
+
+        article>form>div {
+            display: block;
+            width: 100%;
+            height: 51px;
+            border: solid 1px #dadada;
+            padding: 10px 14px 10px 14px;
+            box-sizing: border-box;
+            background: #fff;
+            position: relative;
+        }
+
+        span input {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 29px;
+            border: none;
+            background: #fff;
+            font-size: 15px;
+        }
+
+        a:hover {
+            background-color: skyblue;
+            border-radius: 30px;
+        }
+
+        article>label {
+            width: 50%;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: azure;
+            font-family: "NEXON Lv1 Gothic OTF";
+        }
+
+        header {
+            width: 15%;
+            height: 10%;
+            float: left;
+            text-align: center;
+        }
+
+        nav {
+            width: 85%;
+            height: 10%;
+            float: left;
+        }
+
+        article {
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 5%;
+            text-align: left;
+            width: 80%;
+            border: dashed skyblue 2px;
+        }
+
+        p {
+            margin: 0;
+            padding-bottom: 10px;
+            text-indent: 20px;
+        }
+
+        section {
+            border: solid skyblue 2px;
+            width: 70%;
+            float: left;
+        }
+
+        aside {
+            width: 14%;
+            float: left;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            clear: both;
+        }
+
+        h1 {
+            text-shadow: 2px 2px skyblue;
+        }
+
+        h2 {
+            padding: 10px;
+            text-align: center;
+            color: skyblue;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+            padding: 8px;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+            font-size: 20px;
+            padding: 8px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        span {
+            color: darkblue;
+            font-size: 20px;
+        }
+
+        img {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h4 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        //숫자, 영 대 소문자, 특수문자, 한글 체크
+        var pattern_num = /[0-9]/;	// 숫자 
+        var pattern_eng = /[a-zA-Z]/;	// 영어 대, 소문자 
+        var pattern_spc = /[-~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+        var pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글
+
+        //내용 입력 확인
+        function non(e) {
+            var worker = new Worker("worker.js");
+
+            worker.postMessage("");
+            worker.onmessage = function (event) {
+                var msg = "Worker: " + event.data;
+                alert(msg);
+            }
+        }
+
+        //이름 확인
+        function nameCheck(e) {
+            var pattern_kor_name = /[가-힣]/; // 한글
+            var name = e.value.toString();
+            //한글만 입력
+            if (!(pattern_num.test(name)) && !(pattern_eng.test(name)) && !(pattern_spc.test(name)) && (pattern_kor_name.test(name))) {
+                if (name.length <= 6 && name.length >= 2) {
+                    alert('이름이 제대로 입력되었습니다.');
+                } else {
+                    alert('이름은 2자리 이상,  6자리 이하어야 합니다.');
+                }
+            } else {
+                alert("이름을 제대로 입력해주세요");
+            }
+        }
+
+        //나이 확인
+        function ageCheck(e) {
+            var age = e.value.toString();
+            //숫자만 입력
+            if ((pattern_num.test(age)) && !(pattern_eng.test(age)) && !(pattern_spc.test(age)) && !(pattern_kor.test(age))) {
+                if (age.length < 4 && age > 0 && age < 135) {
+                    alert('나이가 제대로 입력되었습니다.');
+                } else { //기네스북에 등재된 최고령 나이 134
+                    alert('나이는 최소 1살부터 최대 134살 까지 입력 가능합니다.');
+                }
+            } else {
+                alert("숫자만 입력 가능합니다.");
+            }
+        }
+
+        //아이디 확인
+        function idCheck(e) {
+            var id = e.value.toString();
+            var pattern_eng_small = /[a-z]/;
+            //숫자, 영어만 입력
+            if ((pattern_eng_small.test(id)) && !(pattern_spc.test(id)) && !(pattern_kor.test(id))) {
+                if ((id.length >= 4 && id.length <= 10) || pattern_num.test(id)) {
+                    alert('아이디가 제대로 입력되었습니다.');
+                } else {
+                    alert('아이디는 4자리 이상 10자리 이하로 입력해야 합니다.');
+                }
+            } else {
+                alert("아이디는 최소 4자리이상 숫자, 영어 소문자만 입력 가능합니다.");
+            }
+        }
+
+        //비밀번호 확인
+        function pwCheck(e) {
+            var pw = e.value.toString();
+            var pattern_eng_small = /[a-z]/;
+            //숫자, 영어, 특수문자만 입력
+            if ((pattern_num.test(pw)) && (pattern_eng_small.test(pw)) && (pattern_spc.test(pw)) && !(pattern_kor.test(pw))) {
+                if (pw.length >= 6 && pw.length <= 14) {
+                    alert('이메일이 제대로 입력되었습니다.');
+                } else {
+                    alert('비밀번호는 6자리 이상 14자리 이하로 입력해야 합니다.');
+                }
+            } else {
+                alert("비밀번호는 6자리 이상 14자리 이하로 숫자, 영어 소문자, 특수문자조합으로 이루어야 합니다.");
+            }
+        }
+
+        //이메일 확인
+        function mailCheck(e) {
+            var mail = e.value.toString();
+            var pattern_spc_at = /[@]/; //골뱅이
+            //숫자, 영어, 특수문자만 입력
+            if (((pattern_num.test(mail)) || (pattern_eng.test(mail))) && (pattern_spc_at.test(mail)) && !(pattern_kor.test(mail))) {
+                if (mail.length >= 10 && mail.length <= 30) {
+                    if (mail.slice(mail.length - 4) === ".com" || mail.slice(mail.length - 4) === ".net") {
+                        alert('이메일이 제대로 입력되었습니다.');
+                    } else {
+                        alert('이메일형식이 옳바르지 않습니다. \n(.com or .net이 아닙니다.)');
+                    }
+                } else {
+                    alert('이메일은 10자리 이상 30자리 이하로 입력해야 합니다.');
+                }
+            } else {
+                alert("이메일은 숫자, 영어 대 소문자, @으로 이루어야 합니다.");
+            }
+        }
+
+        //전화번호 확인
+        function pnCheck(e) {
+            var pn = e.value.toString();
+            //숫자만 입력
+            if ((pattern_num.test(pn)) && !(pattern_eng.test(pn)) && !(pattern_spc.test(pn)) && !(pattern_kor.test(pn))) {
+                if (pn.length < 11) {
+                    alert('전화번호는 11자리이어야 합니다.');
+                } else {
+                    alert('전화번호가 제대로 입력되었습니다.');
+                }
+            } else {
+                alert("숫자만 입력 가능합니다.");
+            }
+        }
+
+        //입력하지 않은 값 확인 및 출력
+        function nullCheck() {
+            var name = document.getElementById('userName').value;
+            var age = document.getElementById('age').value;
+            var id = document.getElementById('userId').value;
+            var pw = document.getElementById('pw').value;
+            var address = document.getElementById('addressList').value;
+            var tel = document.getElementById('tel').value;
+
+            var msg = "";
+
+            if (name === "") {
+                msg += "이름, ";
+            }
+            if (age === "") {
+                msg += "나이, ";
+            }
+            if (id === "") {
+                msg += "아이디, ";
+            }
+            if (pw === "") {
+                msg += "비밀번호, ";
+            }
+            if (address === "") {
+                msg += "주소, ";
+            }
+            if (tel === "") {
+                msg += "전화, ";
+            }
+            if (msg === "") {
+                alert('모든 정보가 확인 되었습니다.');
+            } else {
+                alert(msg + '입력하지 않았습니다.');
+            }
+        }
+    </script>
     <title>회원가입</title>
 </head>
+
 <body>
     <header>
         <h1><a href="index.html" title="메인으로 돌아가기">PotFolio</a></h1>
@@ -23,37 +357,49 @@
     <section>
         <article>
             <form action="" class="box">
-                <label for="userName"><h3>이름</h3></label>
+                <label for="userName">
+                    <h3>이름</h3>
+                </label>
                 <span>
-                    <input id="userName" type="text" maxlength="5" placeholder="이름을 입력하세요 예: 홍길동"
-                    onblur="non(this)" onchange="nameCheck(this)">
+                    <input id="userName" type="text" maxlength="5" placeholder="이름을 입력하세요 예: 홍길동" onblur="non(this)"
+                        onchange="nameCheck(this)">
                 </span><br>
 
-                <label for="age"><h3>나이</h3></label>
+                <label for="age">
+                    <h3>나이</h3>
+                </label>
                 <span>
-                    <input id="age" type="text" maxlength="3" placeholder="나이를 입력하세요 예: 20"
-                    onblur="non(this)" onchange="ageCheck(this)">
+                    <input id="age" type="text" maxlength="3" placeholder="나이를 입력하세요 예: 20" onblur="non(this)"
+                        onchange="ageCheck(this)">
                 </span><br>
 
-                <label for="userId"><h3>아이디</h3></label>
+                <label for="userId">
+                    <h3>아이디</h3>
+                </label>
                 <span>
                     <input id="userId" type="text" size="15" maxlength="10" placeholder="아이디를 입력하세요 예: dhtp12"
-                    onblur="non(this)" onchange="idCheck(this)">
+                        onblur="non(this)" onchange="idCheck(this)">
                 </span><br>
 
-                <label for="pw"><h3>비밀번호</h3></label>
+                <label for="pw">
+                    <h3>비밀번호</h3>
+                </label>
                 <span>
-                    <input id="pw" type="password" maxlength="10" placeholder="비밀번호를 입력하세요"
-                    onblur="non(this)" onchange="pwCheck(this)">
+                    <input id="pw" type="password" maxlength="10" placeholder="비밀번호를 입력하세요" onblur="non(this)"
+                        onchange="pwCheck(this)">
                 </span><br>
 
-                <label for="mail"><h3>이메일</h3></label>
+                <label for="mail">
+                    <h3>이메일</h3>
+                </label>
                 <span>
                     <input id="mail" type="email" maxlength="30" placeholder="이메일을 입력하세요 예: id@naver.com"
-                    onblur="non(this)">
+                        onblur="non(this)">
                 </span><br>
 
-                <label for="address"><h3>주소</h3></label>
+                <label for="address">
+                    <h3>주소</h3>
+                </label>
                 <span>
                     <input type="text" id="addressList" list="address" maxlength="15" placeholder="주소를 입력하세요">
                     <datalist id="address">
@@ -76,25 +422,32 @@
                         <option value="제주도">특별자치도</option>
                     </datalist>
                 </span><br>
-                
 
-                <label for="tel"><h3>전화번호</h3></label>
+
+                <label for="tel">
+                    <h3>전화번호</h3>
+                </label>
                 <span>
                     <input id="tel" type="text" maxlength="11" placeholder="전화번호를 입력하세요 예: 01012345678"
-                    onblur="non(this)" onchange="pnCheck(this)"><br>
+                        onblur="non(this)" onchange="pnCheck(this)"><br>
                 </span><br>
 
-                <label for="birthday"><h3>생일</h3></label>
+                <label for="birthday">
+                    <h3>생일</h3>
+                </label>
                 <span>
                     <input id="birthday" type="date" value="2000-01-01">
                 </span><br>
 
-                <label for="rd"><h3>성별</h3></label>
-                    <div id="rdb">
+                <label for="rd">
+                    <h3>성별</h3>
+                </label>
+                <div id="rdb">
                     <input type="radio" name="sex" value="1" checked>
                     남자
                     <input type="radio" name="sex" value="2">
-                    여자</div><br>
+                    여자
+                </div><br>
 
                 <label for=""> <input id="btnJoin" type="button" onclick="nullCheck()" value="회원가입하기"></label>
                 <label for=""> <input id="btnJoin" type="reset" value="모든 내용 초기화"></label><br>
@@ -106,4 +459,5 @@
 
     <footer></footer>
 </body>
+
 </html>
