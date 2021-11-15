@@ -1,0 +1,809 @@
+<div class="jb-row jb-row-main">
+    <div class="jb-column jb-column-content">
+              
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+          <div class="jb-cell jb-cell-content jb-cell-content-article">
+            <article>
+                              <header>
+                                  <div class="jb-content-title jb-content-title-article">
+                                      <h2><a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-Count-%EA%B5%AC%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C">[JSP/Servlet] 자바빈으로 Count 구하는 예제</a></h2>
+                                      <div class="jb-article-information">
+                                          <ul>
+                                              <li class="jb-article-information-author"><span>개발하고싶은때야</span></li>
+                                              <li class="jb-article-information-category"><span><a href="/category/WEB/Servlet%26JSP" class="jb-category-name">WEB / Servlet&amp;JSP</a></span></li>
+                                              <li class="jb-article-information-date"><span>2017. 12. 27. 10:23</span></li>
+                                              
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </header>
+                              <!-- Content Top -->
+                              <script>
+                                  if ( jbAdSenseContentTopLeftRightShow == 'yes' ) {
+                                      document.write( jbAdSenseContentTopLeftRight );
+                                  }
+                                  if ( jbAdSenseContentTopRightShow == 'yes' ) {
+                                      document.write( jbAdSenseContentTopRight );
+                                  }
+                                  if ( jbAdSenseContentTopShow == 'yes' ) {
+                                      document.write( jbAdSenseContentTop );
+                                  }
+                              </script><div class="jb-adsense-table"><div class="jb-adsense-table-row"><div class="jb-adsense-table-cell jb-adsense-table-cell-left"><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" data-ad-client="ca-pub-8174730946116989" data-ad-slot="7481388019" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><div class="jb-adsense-table-cell jb-adsense-table-cell-right"><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" data-ad-client="ca-pub-8174730946116989" data-ad-slot="2229061338" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div></div>
+                               <div class="jb-content jb-content-article">
+                                <div class="jb-article"><div class="tt_article_useless_p_margin contents_style"><p><b>counter.jsp</b></p><div class="txc-textbox" style="border-style: double; border-width: 3px; border-color: rgb(121, 165, 228); background-color: rgb(219, 232, 251); padding: 10px;"><p>&lt;%@ page language="java" contentType="text/html; charset=EUC-KR"%&gt;</p><p>&lt;!DOCTYPE html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&lt;title&gt;Insert title here&lt;/title&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p><span style="white-space:pre">	</span>&lt;h1&gt;전체 방문자 수 확인&lt;/h1&gt;</p><p><span style="white-space:pre">	</span>&lt;jsp:useBean id="counter" class="mybean.scope.CounterBean" scope="application"&gt;</p><p><span style="white-space:pre">	</span>&lt;jsp:setProperty name="counter" property="newVisit" value="1"/&gt;</p><p><span style="white-space:pre">	</span>&lt;/jsp:useBean&gt;</p><p><span style="white-space:pre">	</span></p><p><span style="white-space:pre">	</span>&lt;!-- 카운터 리셋 --&gt;</p><p><span style="white-space:pre">	</span>&lt;jsp:setProperty property="restart" name="counter"/&gt;</p><p><span style="white-space:pre">	</span></p><p><span style="white-space:pre">	</span>&lt;h2&gt;전체 방문자 수 : &lt;jsp:getProperty property="visitCount" name="counter"/&gt;&lt;/h2&gt;</p><p><span style="white-space:pre">	</span>&lt;form method="post"&gt;</p><p><span style="white-space:pre">		</span>&lt;input type="submit" name="refresh" value="새로고침"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;</p><p><span style="white-space:pre">		</span>&lt;input type="submit" name="restart" value="카운터를 0으로 리셋"/&gt;</p><p><span style="white-space:pre">	</span>&lt;/form&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;<br></p></div><p><br></p><p><b>CounterBean.java</b></p><div class="txc-textbox" style="border-style: double; border-width: 3px; border-color: rgb(243, 197, 52); background-color: rgb(254, 254, 184); padding: 10px;"><p>package mybean.scope;</p><p><br></p><p>public class CounterBean {</p><p><span style="white-space:pre">	</span>int visit = 0;</p><p><span style="white-space:pre">	</span></p><p><span style="white-space:pre">	</span>public void setNewVisit(int num) {</p><p><span style="white-space:pre">		</span>visit = num;</p><p><span style="white-space:pre">	</span>}</p><p><span style="white-space:pre">	</span></p><p><span style="white-space:pre">	</span>public void setRestart(boolean b) {</p><p><span style="white-space:pre">		</span>visit = 0;</p><p><span style="white-space:pre">	</span>}</p><p><span style="white-space:pre">	</span>public int getVisitCount() {</p><p><span style="white-space:pre">		</span>return visit++;</p><p><span style="white-space:pre">	</span>}</p><p>}</p></div><p><br></p><p><b>결과</b></p><div class="jb-image-p-wrap"><p style="text-align: left; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:476px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile8.uf.tistory.com%2Fimage%2F998286485A42F5F4306CF0" src="https://t1.daumcdn.net/cfile/tistory/998286485A42F5F430" style="max-width:100%;height:auto" width="476" height="295" filename="1.PNG" filemime="image/jpeg"></span></p></div><p><br></p><div class="tt_adsense_bottom" style="margin-top:30px"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 본문 하단 (수평형) -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8174730946116989" data-ad-slot="7366193168" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="container_postbtn #post_button_group">
+  <div class="postbtn_like">
+      
+<script>
+  window.ReactionButtonType = 'reaction';
+  window.ReactionApiUrl = '//yuien.tistory.com/reaction';
+  window.ReactionReqBody = {
+      entryId: 120    }
+</script>
+<div class="wrap_btn" id="reaction-120"><button class="btn_post uoc-icon"><div class="uoc-icon"><span class="ico_postbtn ico_like">좋아요</span><span class="txt_like uoc-count">공감</span></div></button></div>
+<script src="https://t1.daumcdn.net/tistory_admin/assets/blog/tistory-e3fa048615c071404196f921bd4754499e701c9c/blogs/script/reaction/reaction-button-container.min.js?_version_=tistory-e3fa048615c071404196f921bd4754499e701c9c"></script>
+      <div class="wrap_btn wrap_btn_share">
+  <button type="button" class="btn_post sns_btn btn_share" data-thumbnail-url="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F998286485A42F5F430" data-title="[JSP/Servlet] 자바빈으로 Count 구하는 예제" data-description="counter.jsp <%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=EUC-KR&quot;%> <!DOCTYPE html> Insert title here 전체 방문자 수 확인 전체 방문자 수 : CounterBean.java package mybean.scope; public cl.." data-profile-image="https://tistory4.daumcdn.net/tistory/1629930/attach/0fd5ed752bfe4942b4ad2498d6619ddd" data-profile-name="개발하고싶은때야" data-pc-url="https://yuien.tistory.com/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-Count-%EA%B5%AC%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C" data-relative-pc-url="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-Count-%EA%B5%AC%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C" data-blog-title="개발자로 살아남기">
+      <span class="ico_postbtn ico_share">공유하기</span>
+  </button>
+</div>
+              <div class="wrap_btn wrap_btn_etc" data-entry-id="120" data-entry-visibility="public" data-category-visibility="public">
+  <button type="button" class="btn_post btn_etc2"><span class="ico_postbtn ico_etc">글 요소</span></button>
+</div>
+  </div>
+  <button type="button" class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="1629930" data-url="https://yuien.tistory.com/120" data-device="web_pc">
+  <em class="txt_state">구독하기</em>
+  <strong class="txt_tool_id">개발자로 살아남기</strong>
+  <span class="img_common_tistory ico_check_type1"></span>
+</button>
+  <div class="postbtn_ccl" data-ccl-type="3">
+  <a href="https://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" class="link_ccl">
+      <span class="bundle_ccl">
+          <span class="ico_postbtn ico_ccl1">저작자표시</span>        </span>
+  </a>
+</div>
+  <!--
+<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Work rdf:about="">
+      <license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+  </Work>
+  <License rdf:about="http://creativecommons.org/licenses/by-fr/">
+      <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+      <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+      <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+      <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+              <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+                  </License>
+</rdf:RDF>
+-->
+</div><div class="another_category another_category_color_gray">
+<h4>'<a href="/category/WEB">WEB</a>&nbsp;&gt;&nbsp;<a href="/category/WEB/Servlet%26JSP">Servlet&amp;JSP</a>' 카테고리의 다른 글</h4>
+<div class="jb-responsive-table"><table>
+<tbody><tr>
+<th>
+<a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 자바빈으로 회원가입 폼 만들기 예제</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.27</td>
+</tr>
+<tr>
+<th>
+<a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 자바빈으로 주차장 구현 예제</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.27</td>
+</tr>
+<tr>
+<th>
+<a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-Count-%EA%B5%AC%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C?category=702986" class="current">[JSP/Servlet] 자바빈으로 Count 구하는 예제</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.27</td>
+</tr>
+<tr>
+<th>
+<a href="/entry/JSPServlet-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 설문조사 폼 만들기 예제</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.26</td>
+</tr>
+<tr>
+<th>
+<a href="/entry/JSPServlet-request%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] request에서 제공하는 메소드 예제</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.26</td>
+</tr>
+<tr>
+<th>
+<a href="/entry/JSPServlet-Java-Beans?category=702986">[JSP/Servlet] Java Beans</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.12.26</td>
+</tr>
+</tbody></table></div></div></div></div>
+                            </div>
+                              
+                              <script>
+                                  if ( jbAdSenseContentBottomShow == 'yes' ) {
+                                      document.write( jbAdSenseContentBottom );
+                                  }
+                              </script><div class="jb-adsense-content-bottom"><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8174730946116989" data-ad-slot="7366193168" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+                              <!-- Content Bottom --><!-- Related Article -->
+                                      <!--
+                  
+                    <div class="jb-related">
+                      <div class="jb-related-header-table">
+                        <div class="jb-related-header-table-row">
+                          <div class="jb-related-header-table-cell jb-related-header-table-cell-title">
+                            <h2><span class="jb-category-name">'WEB/Servlet&amp;JSP'</span> 관련 글</h2>
+                          </div>
+                          <div class="jb-related-header-table-cell jb-related-header-table-cell-more">
+                            <div class="jb-related-more"><a href="/category/WEB/Servlet%26JSP">더 보기</a></div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                        <div class="jb-cell jb-cell-index jb-cell-index-related thumb_type">
+                          <div class="jb-index-table jb-index-table-related">
+                            <div class="jb-index-table-row jb-index-table-row-related">
+                              <div class="jb-index-table-cell jb-index-table-cell-thumbnail jb-index-table-cell-related jb-index-table-cell-thumbnail-related">
+                                                                  <a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">
+                                                                      
+                                                                          <div class="jb-index-thumbnail jb-index-thumbnail-related">
+                                                                              <script>
+                                                                                  document.write( '<img src="//i1.daumcdn.net/thumb/C' + jbThumbnailSize + '/?fname=https://t1.daumcdn.net/cfile/tistory/99A4224A5A433D6827" alt="">' );
+                                                                              </script>
+                                                                          </div>
+                                                                      
+                                                                  </a>
+                                                              </div>
+                              <div class="jb-index-table-cell jb-index-table-cell-information jb-index-table-cell-related jb-index-table-cell-information-related">
+                                                                  <div class="jb-index-information-table"><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-1">
+                                                                      <h3 class="jb-index-title jb-index-title-related"><a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 자바빈으로 회원가입 폼 만들기 예제</a></h3>
+                                                                      <ul class="jb-index-information jb-index-information-related">
+                                                                          <li class="jb-index-information-date jb-index-information-date-related">2017.12.27</li>
+                                                                      </ul>
+                                                                      <div class="jb-index-read-more"><a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">더 읽기</a></div>
+                                                                  </div></div><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-2"></div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="jb-cell jb-cell-index jb-cell-index-related thumb_type">
+                          <div class="jb-index-table jb-index-table-related">
+                            <div class="jb-index-table-row jb-index-table-row-related">
+                              <div class="jb-index-table-cell jb-index-table-cell-thumbnail jb-index-table-cell-related jb-index-table-cell-thumbnail-related">
+                                                                  <a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C?category=702986">
+                                                                      
+                                                                          <div class="jb-index-thumbnail jb-index-thumbnail-related">
+                                                                              <script>
+                                                                                  document.write( '<img src="//i1.daumcdn.net/thumb/C' + jbThumbnailSize + '/?fname=https://t1.daumcdn.net/cfile/tistory/9937354A5A43303032" alt="">' );
+                                                                              </script>
+                                                                          </div>
+                                                                      
+                                                                  </a>
+                                                              </div>
+                              <div class="jb-index-table-cell jb-index-table-cell-information jb-index-table-cell-related jb-index-table-cell-information-related">
+                                                                  <div class="jb-index-information-table"><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-1">
+                                                                      <h3 class="jb-index-title jb-index-title-related"><a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 자바빈으로 주차장 구현 예제</a></h3>
+                                                                      <ul class="jb-index-information jb-index-information-related">
+                                                                          <li class="jb-index-information-date jb-index-information-date-related">2017.12.27</li>
+                                                                      </ul>
+                                                                      <div class="jb-index-read-more"><a href="/entry/JSPServlet-%EC%9E%90%EB%B0%94%EB%B9%88%EC%9C%BC%EB%A1%9C-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C?category=702986">더 읽기</a></div>
+                                                                  </div></div><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-2"></div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="jb-cell jb-cell-index jb-cell-index-related thumb_type">
+                          <div class="jb-index-table jb-index-table-related">
+                            <div class="jb-index-table-row jb-index-table-row-related">
+                              <div class="jb-index-table-cell jb-index-table-cell-thumbnail jb-index-table-cell-related jb-index-table-cell-thumbnail-related">
+                                                                  <a href="/entry/JSPServlet-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">
+                                                                      
+                                                                          <div class="jb-index-thumbnail jb-index-thumbnail-related">
+                                                                              <script>
+                                                                                  document.write( '<img src="//i1.daumcdn.net/thumb/C' + jbThumbnailSize + '/?fname=https://t1.daumcdn.net/cfile/tistory/9990B94B5A42576104" alt="">' );
+                                                                              </script>
+                                                                          </div>
+                                                                      
+                                                                  </a>
+                                                              </div>
+                              <div class="jb-index-table-cell jb-index-table-cell-information jb-index-table-cell-related jb-index-table-cell-information-related">
+                                                                  <div class="jb-index-information-table"><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-1">
+                                                                      <h3 class="jb-index-title jb-index-title-related"><a href="/entry/JSPServlet-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] 설문조사 폼 만들기 예제</a></h3>
+                                                                      <ul class="jb-index-information jb-index-information-related">
+                                                                          <li class="jb-index-information-date jb-index-information-date-related">2017.12.26</li>
+                                                                      </ul>
+                                                                      <div class="jb-index-read-more"><a href="/entry/JSPServlet-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%98%88%EC%A0%9C?category=702986">더 읽기</a></div>
+                                                                  </div></div><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-2"></div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="jb-cell jb-cell-index jb-cell-index-related thumb_type">
+                          <div class="jb-index-table jb-index-table-related">
+                            <div class="jb-index-table-row jb-index-table-row-related">
+                              <div class="jb-index-table-cell jb-index-table-cell-thumbnail jb-index-table-cell-related jb-index-table-cell-thumbnail-related">
+                                                                  <a href="/entry/JSPServlet-request%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%98%88%EC%A0%9C?category=702986">
+                                                                      
+                                                                          <div class="jb-index-thumbnail jb-index-thumbnail-related">
+                                                                              <script>
+                                                                                  document.write( '<img src="//i1.daumcdn.net/thumb/C' + jbThumbnailSize + '/?fname=https://t1.daumcdn.net/cfile/tistory/99A998355A4248EF01" alt="">' );
+                                                                              </script>
+                                                                          </div>
+                                                                      
+                                                                  </a>
+                                                              </div>
+                              <div class="jb-index-table-cell jb-index-table-cell-information jb-index-table-cell-related jb-index-table-cell-information-related">
+                                                                  <div class="jb-index-information-table"><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-1">
+                                                                      <h3 class="jb-index-title jb-index-title-related"><a href="/entry/JSPServlet-request%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%98%88%EC%A0%9C?category=702986">[JSP/Servlet] request에서 제공하는 메소드 예제</a></h3>
+                                                                      <ul class="jb-index-information jb-index-information-related">
+                                                                          <li class="jb-index-information-date jb-index-information-date-related">2017.12.26</li>
+                                                                      </ul>
+                                                                      <div class="jb-index-read-more"><a href="/entry/JSPServlet-request%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%98%88%EC%A0%9C?category=702986">더 읽기</a></div>
+                                                                  </div></div><div class="jb-index-information-table-row"><div class="jb-index-information-table-cell jb-index-information-table-cell-2"></div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    </div>
+                  
+                                      -->
+                
+                              <p class="jb-discuss-count">
+                                  <span class="jb-discuss-count-reply"><a href="#rp" onclick=""><span class="jb-discuss-count-label">댓글</span><span id="commentCount120_0"><span class="jb-discuss-count-number">(0)</span></span></a></span>
+                              </p>
+                              <div id="entry120Comment">
+                                  
+                                  <form method="post" action="/comment/add/120" onsubmit="return false" style="margin: 0">
+                                      <div class="jb-wrap-form-discuss jb-wrap-form-discuss-reply">
+                                          
+                                              
+                                                  <div class="jb-form-discuss jb-form-discuss-name jb-form-discuss-table">
+                                                      <div class="jb-form-discuss-table-row">
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-icon">
+                                                              <div class="jb-form-discuss-icon jb-form-discuss-icon-name">
+                                                                  <i class="xi-user"></i>
+                                                              </div>
+                                                          </div>
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-input">
+                                                              <input type="text" id="name_" name="name" value="" placeholder="Name" class="jb-form-input-text">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="jb-form-discuss jb-form-discuss-homepage jb-form-discuss-table">
+                                                      <div class="jb-form-discuss-table-row">
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-icon">
+                                                              <div class="jb-form-discuss-icon jb-form-discuss-icon-homepage">
+                                                                  <i class="xi-home"></i>
+                                                              </div>
+                                                          </div>
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-input">
+                                                              <input type="text" id="homepage_" name="homepage" value="http://" class="jb-form-input-text">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="jb-form-discuss jb-form-discuss-password jb-form-discuss-table">
+                                                      <div class="jb-form-discuss-table-row">
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-icon">
+                                                              <div class="jb-form-discuss-icon jb-form-discuss-icon-password">
+                                                                  <i class="xi-key"></i>
+                                                              </div>
+                                                          </div>
+                                                          <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-input">
+                                                              <input type="password" id="password_" name="password" value="" placeholder="Password" class="jb-form-input-text">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              
+                                              <div class="jb-form-discuss jb-form-discuss-secret jb-form-discuss-table">
+                                                  <div class="jb-form-discuss-table-row">
+                                                      <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-checkbox">
+                                                          <input type="checkbox" id="secret" name="secret" value="1" class="jb-form-input-checkbox">
+                                                          <label for="secret" class="jb-form-label jb-form-label-secret jb-form-label-secret-icon"></label>
+                                                      </div>
+                                                      <div class="jb-form-discuss-table-cell jb-form-discuss-table-cell-label">
+                                                          <label for="secret" class="jb-form-label jb-form-label-secret jb-form-label-secret-text">비밀 글</label>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          
+                                          <div class="jb-form-discuss jb-form-discuss-content">
+                                              <textarea name="comment" class="jb-form-textarea"></textarea>
+                                          </div>
+                                          <div class="jb-form-discuss jb-form-discuss-submit">
+                                              <button onclick="addComment(this, 120); return false;" class="jb-form-button">등록</button>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div><script type="text/javascript">loadedComments[120]=true;findFragmentAndHighlight(120)</script>
+            </article>
+          </div>
+        
+      
+      
+        <div class="jb-cell jb-cell-pagination">
+                      <div class="jb-pagination">
+                          <ul>
+                              <li><a href="/entry/JSPServlet-자바빈으로-주차장-구현-예제"><i class="xi-angle-left-min"></i></a></li>
+                              
+                                  <li><a href="/entry/Java-소수점-원하는-자리-수까지-표시하는-방법"><span>1</span></a></li>
+                              
+                                  <li><a><span>···</span></a></li>
+                              
+                                  <li><a href="/entry/부트스트랩"><span>66</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-방문자-카운트-올리는-예제"><span>67</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-자바빈으로-회원가입-폼-만들기-예제"><span>68</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-자바빈으로-주차장-구현-예제"><span>69</span></a></li>
+                              
+                                  <li class="jb-active"><a><span class="selected">70</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-설문조사-폼-만들기-예제"><span>71</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-request에서-제공하는-메소드-예제"><span>72</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-Java-Beans"><span>73</span></a></li>
+                              
+                                  <li><a href="/entry/JSPServlet-선언문에-변수-선언과-메소드-정의하는-예제"><span>74</span></a></li>
+                              
+                                  <li><a><span>···</span></a></li>
+                              
+                                  <li><a href="/entry/ServletContextServletConfig"><span>165</span></a></li>
+                              
+                              <li><a href="/entry/JSPServlet-설문조사-폼-만들기-예제"><i class="xi-angle-right-min"></i></a></li>
+                          </ul>
+                      </div>
+        </div>
+      
+    </div>
+    <div class="jb-column jb-column-sidebar">
+      <aside>
+                  <h2 class="jb-section-title jb-section-title-sidebar">Sidebar - Right</h2>
+        <!-- Sidebar - Right --><!-- Blog Information -->
+            <div class="jb-cell jb-cell-module jb-cell-module-blog-information">
+              <div class="jb-module-title jb-module-title-blog-information">
+                <h3>블로그 정보</h3>
+              </div>
+              <div class="jb-module-content jb-module-content-blog-information">
+                <p class="jb-blog-information jb-blog-information-image"><img src="https://tistory4.daumcdn.net/tistory/1629930/attach/0fd5ed752bfe4942b4ad2498d6619ddd" alt=""></p>
+                <p class="jb-blog-information jb-blog-information-blogger">개발하고싶은때야</p>
+                <p class="jb-blog-information jb-blog-information-description">...</p>
+              </div>
+            </div>
+          <!-- Category -->
+            <div class="jb-cell jb-cell-module jb-cell-module-category">
+              <div class="jb-module-title jb-module-title-category">
+                <h3>카테고리</h3>
+              </div>
+              <div class="jb-module-content jb-module-content-category">
+                <ul class="tt_category">
+  <li class="">
+      <a class="link_tit" href="/category">
+          전체보기							<span class="c_cnt">(165)</span>
+          
+                  </a>
+
+              <ul class="category_list">
+                          <li class="">
+                  <a class="link_item" href="/category/WEB">
+                      WEB													<span class="c_cnt">(102)</span>
+                      
+                                          </a>
+
+                                      <ul class="sub_category_list">
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Spring">
+                                  Spring
+                                                                          <span class="c_cnt">(19)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Servlet%26JSP">
+                                  Servlet&amp;JSP
+                                                                          <span class="c_cnt">(37)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Javascript">
+                                  Javascript
+                                                                          <span class="c_cnt">(8)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Jquery">
+                                  Jquery
+                                                                          <span class="c_cnt">(6)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Java">
+                                  Java
+                                                                          <span class="c_cnt">(29)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/WEB/Bootstrap">
+                                  Bootstrap
+                                                                          <span class="c_cnt">(3)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                          </ul>
+                  
+              </li>
+                          <li class="">
+                  <a class="link_item" href="/category/DB">
+                      DB													<span class="c_cnt">(28)</span>
+                      
+                                          </a>
+
+                                      <ul class="sub_category_list">
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/DB/DB%20%EA%B4%80%EB%A0%A8">
+                                  DB 관련
+                                                                          <span class="c_cnt">(22)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/DB/Oracle">
+                                  Oracle
+                                                                          <span class="c_cnt">(2)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/DB/%20Mysql">
+                                  Mysql
+                                                                          <span class="c_cnt">(3)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/DB/Mybatis">
+                                  Mybatis
+                                                                          <span class="c_cnt">(1)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                          </ul>
+                  
+              </li>
+                          <li class="">
+                  <a class="link_item" href="/category/OS">
+                      OS													<span class="c_cnt">(2)</span>
+                      
+                                          </a>
+
+                                      <ul class="sub_category_list">
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/OS/Linux">
+                                  Linux
+                                                                          <span class="c_cnt">(1)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/OS/Windows">
+                                  Windows
+                                                                          <span class="c_cnt">(1)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                          </ul>
+                  
+              </li>
+                          <li class="">
+                  <a class="link_item" href="/category/CS">
+                      CS													<span class="c_cnt">(2)</span>
+                      
+                                          </a>
+
+                  
+              </li>
+                          <li class="">
+                  <a class="link_item" href="/category/BLOG">
+                      BLOG													<span class="c_cnt">(3)</span>
+                      
+                                          </a>
+
+                  
+              </li>
+                          <li class="">
+                  <a class="link_item" href="/category/ETC">
+                      ETC													<span class="c_cnt">(28)</span>
+                      
+                                          </a>
+
+                                      <ul class="sub_category_list">
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/ETC/Tomcat">
+                                  Tomcat
+                                                                          <span class="c_cnt">(2)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/ETC/%EA%B0%9C%EB%B0%9C%20%EC%98%A4%EB%A5%98%20%EC%A0%95%EB%A6%AC">
+                                  개발 오류 정리
+                                                                          <span class="c_cnt">(15)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/ETC/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">
+                                  프로젝트
+                                                                          <span class="c_cnt">(2)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/ETC/%EA%B0%9C%EB%B0%9C%ED%88%B4">
+                                  개발툴
+                                                                          <span class="c_cnt">(6)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                                  <li class="">
+                              <a class="link_sub_item" href="/category/ETC/%EB%B9%8C%EB%93%9C">
+                                  빌드
+                                                                          <span class="c_cnt">(3)</span>
+                                  
+                                                                  </a>
+                          </li>
+                                          </ul>
+                  
+              </li>
+                  </ul>
+          </li>
+</ul>
+              </div>
+            </div>
+          <div class="module module_plugin"><div class="jb-cell jb-cell-module jb-cell-module-links">
+                              <div class="jb-module-title jb-module-title-links">
+                                  <h3>애드센스</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-links jb-module-content-list">
+                                  <ul>
+                          <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 사이드바 2번 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8174730946116989" data-ad-slot="6103715402" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>			
+                          </ul>
+                              </div>
+                          </div></div><!-- Popular Posts -->
+                          <div class="jb-cell jb-cell-module jb-cell-module-recent-posts jb-cell-module-popular-posts">
+                              <div class="jb-module-title jb-module-title-recent-posts jb-module-title-popular-posts">
+                                  <h3>인기 글</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-recent-posts jb-module-content-list">
+                                  <ul>
+                                      
+                                          <li><a href="/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%97%90%EC%84%9C-EL%ED%91%9C%ED%98%84%EC%8B%9D-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="https://tistory4.daumcdn.net/tistory/1629930/skin/images/jb-blank-150x150.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Javascript] 자바스크립트에서 EL(표현⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries188"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4-%EC%84%A0%ED%83%9D-%EC%97%AC%EB%B6%80-%EA%B2%B0%EC%A0%95-%ED%9B%84-value%EA%B0%92-%EB%84%A3%EA%B8%B0"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="https://tistory4.daumcdn.net/tistory/1629930/skin/images/jb-blank-150x150.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Jquery] 제이쿼리 체크박스 선택 여부⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries179"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/Windows-%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C-Tail-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="//i1.daumcdn.net/thumb/C150x150/?fname=https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdViSml%2FbtqB8ayvMQh%2FTFeQlrf75jTRkyAl3bPXW0%2Fimg.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Windows] 윈도우에서 Tail 명령어 사용⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries205"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/Java-%EC%86%8C%EC%88%98%EC%A0%90-%EC%9B%90%ED%95%98%EB%8A%94-%EC%9E%90%EB%A6%AC-%EC%88%98%EA%B9%8C%EC%A7%80-%ED%91%9C%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="https://tistory4.daumcdn.net/tistory/1629930/skin/images/jb-blank-150x150.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Java] 소수점 원하는 자리 수까지 표시⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries221"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/Maven-%EB%A9%94%EC%9D%B4%EB%B8%90-%EB%B9%8C%EB%93%9C%EC%8B%9C-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="//i1.daumcdn.net/thumb/C150x150/?fname=https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwsge%2FbtqCd0X8HbA%2FBeIkcFRQ5jnRQin1TSQKX0%2Fimg.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Maven] 메이븐 빌드시 플러그인 에러⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries208"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+                                  </ul>
+                              </div>
+                          </div>
+                      <!-- Recent Posts -->
+                          <div class="jb-cell jb-cell-module jb-cell-module-recent-posts">
+                              <div class="jb-module-title jb-module-title-recent-posts">
+                                  <h3>최근 글</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-recent-posts jb-module-content-list">
+                                  <ul>
+                                      
+                                          <li><a href="/entry/Java-%EC%86%8C%EC%88%98%EC%A0%90-%EC%9B%90%ED%95%98%EB%8A%94-%EC%9E%90%EB%A6%AC-%EC%88%98%EA%B9%8C%EC%A7%80-%ED%91%9C%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="https://tistory4.daumcdn.net/tistory/1629930/skin/images/jb-blank-150x150.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Java] 소수점 원하는 자리 수까지 표시⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries221"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/C%EC%96%B8%EC%96%B4-%EC%B9%B4%ED%94%84%EB%A6%AC%EC%B9%B4-%EC%88%98-%EA%B5%AC%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="//i1.daumcdn.net/thumb/C150x150/?fname=https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmv6DP%2FbtqLYMic6CI%2FVjRwkEE1BCxSuMwlnNXIDK%2Fimg.jpg" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[C언어]  카프리카 수 구하는 방법</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries220"><i class="xi-message-o"></i>2</span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/C%EC%96%B8%EC%96%B4-%EC%B0%A8%EB%9F%89-%EB%B2%88%ED%98%B8-%EC%A0%84%ED%99%94-%EB%B2%88%ED%98%B8-%EC%95%8C%EC%95%84%EB%A7%9E%EC%B6%94%EA%B8%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="//i1.daumcdn.net/thumb/C150x150/?fname=https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FIuLBX%2FbtqLXTn5Gwl%2FHkdtIz4d0gT904SQfrTOH1%2Fimg.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[C언어]  차량 번호, 전화 번호 알아맞⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries219"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/%EC%9D%B4%ED%81%B4%EB%A6%BD%EC%8A%A4-%EC%BD%98%EC%86%94%EC%B0%BD-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%ED%98%84%EC%83%81-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="//i1.daumcdn.net/thumb/C150x150/?fname=https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhKxvx%2FbtqLOPZ3Tty%2Fz6ceGUKPpEjghKmQqCpYAK%2Fimg.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[이클립스] 콘솔창 한글 깨짐 현상 해결⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries218"><i class="xi-message-o"></i>1</span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+
+                                          <li><a href="/entry/Javascript-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-null-%EC%B2%B4%ED%81%AC-%EB%B0%A9%EB%B2%95"><span class="jb-module-list-table"><span class="jb-module-list-table-row"><span class="jb-module-list-table-cell jb-module-list-table-cell-1"><img src="https://tistory4.daumcdn.net/tistory/1629930/skin/images/jb-blank-150x150.png" alt=""></span><span class="jb-module-list-table-cell jb-module-list-table-cell-2"><span class="jb-recent-posts-title">[Javascript] 자바스크립트 문자열 체크⋯</span><span class="jb-recent-posts-reply-count"><span id="commentCountOnRecentEntries214"></span></span><span class="jb-recent-posts-author">개발하고싶은때야</span></span></span></span></a></li>
+                                      
+                                  </ul>
+                              </div>
+                          </div>
+                      <!-- Recent Replies -->
+                          <div class="jb-cell jb-cell-module jb-cell-module-recent-replies">
+                              <div class="jb-module-title jb-module-title-recent-replies">
+                                  <h3>최근 댓글</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-recent-replies jb-module-content-list">
+                                  <ul>
+                                      
+                                          <li><span class="jb-module-list"><a href="/220#comment21317128"><span class="jb-recent-replies-title">81이 카프리카 수인 게 아니라 제곱근인⋯</span><span class="jb-recent-replies-name">ㅇㅇ</span><span class="jb-recent-replies-time">10.18</span></a></span></li>
+                                      
+
+                                          <li><span class="jb-module-list"><a href="/218#comment20765000"><span class="jb-recent-replies-title">안녕하세요 혹시 임포트한 파일들이 꽤⋯</span><span class="jb-recent-replies-name">최원</span><span class="jb-recent-replies-time">05.19</span></a></span></li>
+                                      
+
+                                          <li><span class="jb-module-list"><a href="/192#comment19927672"><span class="jb-recent-replies-title">감사합니다 : )</span><span class="jb-recent-replies-name">pebble</span><span class="jb-recent-replies-time">2020</span></a></span></li>
+                                      
+
+                                          <li><span class="jb-module-list"><a href="/192#comment19804249"><span class="jb-recent-replies-title">감사합니다</span><span class="jb-recent-replies-name">감사안부</span><span class="jb-recent-replies-time">2020</span></a></span></li>
+                                      
+
+                                          <li><span class="jb-module-list"><a href="/196#comment19344716"><span class="jb-recent-replies-title">가로 스크롤 생기는건 어떻게 없애나요?</span><span class="jb-recent-replies-name">디자인여기야</span><span class="jb-recent-replies-time">2019</span></a></span></li>
+                                      
+                                  </ul>
+                              </div>
+                          </div>
+                      <div class="module module_plugin"><div class="jb-cell jb-cell-module jb-cell-module-links">
+                              <div class="jb-module-title jb-module-title-links">
+                                  <h3>애드센스</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-links jb-module-content-list">
+                                  <ul>
+                          <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 사이드바 2번 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8174730946116989" data-ad-slot="6103715402" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>			
+                          </ul>
+                              </div>
+                          </div></div><!-- Statistics -->
+                          <div class="jb-cell jb-cell-module jb-cell-module-statistics">
+                              <div class="jb-module-title jb-module-title-statistics">
+                                  <h3>통계</h3>
+                              </div>
+                              <div class="jb-module-content jb-module-content-statistics jb-module-content-list">
+                                  <ul>
+                                      <li><span class="jb-module-list"><span class="jb-statistics-label">전체 : </span><span class="jb-statistics-count">89,157</span></span></li>
+                                      <li><span class="jb-module-list"><span class="jb-statistics-label">오늘 : </span><span class="jb-statistics-count">0</span></span></li>
+                                      <li><span class="jb-module-list"><span class="jb-statistics-label">어제 : </span><span class="jb-statistics-count">238</span></span></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      <!-- Calendar -->
+            <div class="jb-cell jb-cell-module jb-cell-module-calendar">
+              <div class="jb-module-title jb-module-title-calendar">
+                <h3>달력</h3>
+              </div>
+              <div class="jb-module-content jb-module-content-calendar">
+                        <table class="tt-calendar" cellpadding="0" cellspacing="1" style="width: 100%; table-layout: fixed">
+          <caption class="cal_month">
+              <a href="/archive/202110" title="1개월 앞의 달력을 보여줍니다.">«</a>
+              &nbsp;
+              <a href="/archive/202111" title="현재 달의 달력을 보여줍니다.">2021/11</a>
+              &nbsp;
+              <a href="/archive/202112" title="1개월 뒤의 달력을 보여줍니다.">»</a>
+          </caption>
+          <thead>
+          <tr>
+              <th class="cal_week2">일</th>
+              <th class="cal_week1">월</th>
+              <th class="cal_week1">화</th>
+              <th class="cal_week1">수</th>
+              <th class="cal_week1">목</th>
+              <th class="cal_week1">금</th>
+              <th class="cal_week1">토</th>
+          </tr>
+          </thead>
+          <tbody>
+                  <tr class="cal_week">
+          <td class="cal_day1">&nbsp;</td>
+          <td class=" cal_day cal_day3">1</td>
+          <td class=" cal_day cal_day3">2</td>
+          <td class=" cal_day cal_day3">3</td>
+          <td class=" cal_day cal_day3">4</td>
+          <td class=" cal_day cal_day3">5</td>
+          <td class=" cal_day cal_day3">6</td>
+      </tr>
+      <tr class="cal_week">
+          <td class=" cal_day cal_day_sunday cal_day3">7</td>
+          <td class=" cal_day cal_day3">8</td>
+          <td class=" cal_day cal_day3">9</td>
+          <td class=" cal_day cal_day3">10</td>
+          <td class=" cal_day cal_day3">11</td>
+          <td class=" cal_day cal_day3">12</td>
+          <td class=" cal_day cal_day3">13</td>
+      </tr>
+      <tr class="cal_week cal_current_week">
+          <td class=" cal_day cal_day_sunday cal_day3">14</td>
+          <td class=" cal_day cal_day3">15</td>
+          <td class=" cal_day cal_day4">16</td>
+          <td class=" cal_day cal_day3">17</td>
+          <td class=" cal_day cal_day3">18</td>
+          <td class=" cal_day cal_day3">19</td>
+          <td class=" cal_day cal_day3">20</td>
+      </tr>
+      <tr class="cal_week">
+          <td class=" cal_day cal_day_sunday cal_day3">21</td>
+          <td class=" cal_day cal_day3">22</td>
+          <td class=" cal_day cal_day3">23</td>
+          <td class=" cal_day cal_day3">24</td>
+          <td class=" cal_day cal_day3">25</td>
+          <td class=" cal_day cal_day3">26</td>
+          <td class=" cal_day cal_day3">27</td>
+      </tr>
+      <tr class="cal_week">
+          <td class=" cal_day cal_day_sunday cal_day3">28</td>
+          <td class=" cal_day cal_day3">29</td>
+          <td class=" cal_day cal_day3">30</td>
+          <td class="cal_day2">&nbsp;</td>
+          <td class="cal_day2">&nbsp;</td>
+          <td class="cal_day2">&nbsp;</td>
+          <td class="cal_day2">&nbsp;</td>
+      </tr>
+          </tbody>
+      </table>
+      
+              </div>
+            </div>
+           <!-- Archives -->
+            <div class="jb-cell jb-cell-module jb-cell-module-archives">
+              <div class="jb-module-title jb-module-title-archives">
+                <h3>보관함</h3>
+              </div>
+              <div class="jb-module-content jb-module-content-archives jb-module-content-list">
+                <ul>
+                  
+                    <li><span class="jb-module-list"><a href="/archive/202011"><span class="jb-archives-date">2020/11</span><span class="jb-archives-count">(1)</span></a></span></li>
+                  
+
+                    <li><span class="jb-module-list"><a href="/archive/202010"><span class="jb-archives-date">2020/10</span><span class="jb-archives-count">(3)</span></a></span></li>
+                  
+
+                    <li><span class="jb-module-list"><a href="/archive/202007"><span class="jb-archives-date">2020/07</span><span class="jb-archives-count">(2)</span></a></span></li>
+                  
+
+                    <li><span class="jb-module-list"><a href="/archive/202006"><span class="jb-archives-date">2020/06</span><span class="jb-archives-count">(1)</span></a></span></li>
+                  
+
+                    <li><span class="jb-module-list"><a href="/archive/202003"><span class="jb-archives-date">2020/03</span><span class="jb-archives-count">(2)</span></a></span></li>
+                  
+                </ul>
+              </div>
+            </div>
+          
+      </aside>
+    </div>
+  </div>
